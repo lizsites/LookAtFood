@@ -11,6 +11,6 @@ export class LoginService {
 
   public login(user :User) : User {
     
-    return this.http.post("http://localhost:8080/FoodForThought/login", user) as unknown as User;
+    return this.http.post("http://localhost:8080/JenkinsRepo/login", user) as unknown as User;
   }
 }

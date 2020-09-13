@@ -5,10 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from "@angular/forms";
+
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SearchApiComponent } from './components/search-api/search-api.component';
+
+
 
 
 @NgModule({

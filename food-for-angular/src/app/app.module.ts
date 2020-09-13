@@ -10,6 +10,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SearchApiComponent } from './components/search-api/search-api.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -21,7 +22,8 @@ import { SearchApiComponent } from './components/search-api/search-api.component
     UpdateUserComponent,
     AddUserComponent,
     LogoutComponent,
-    SearchApiComponent
+    SearchApiComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

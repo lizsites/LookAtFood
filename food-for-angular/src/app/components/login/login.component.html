@@ -1,4 +1,6 @@
-<h2>Login page</h2>
-username : <input type="text" [(ngModel)]="username"/>
-password : <input type="text" [(ngModel)]="password"/>
-<button (click)="loginFunc()">Login</button>
+<section>
+<h2>Please Enter Your Username and Password:</h2>
+username : <input type="text" id="username" placeholder="USERNAME" [(ngModel)]="username"/>
+password : <input type="password" id="password" placeholder="PASSWORD" [(ngModel)]="password"/>
+<button id = "loginbtn" (click)="loginFunc()">Login</button>
+</section>

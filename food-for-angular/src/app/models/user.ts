@@ -4,5 +4,8 @@ export class User {
     public username : string;
     public password : string;
     public id : number;
+    public minCalories : number;
+    public maxCalories : number;
+    public diet : string;
 
 }

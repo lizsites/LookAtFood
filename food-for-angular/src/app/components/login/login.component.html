@@ -4,3 +4,7 @@ username : <input type="text" id="username" placeholder="USERNAME" [(ngModel)]="
 password : <input type="password" id="password" placeholder="PASSWORD" [(ngModel)]="password"/>
 <button id = "loginbtn" (click)="loginFunc()">Login</button>
 </section>
+
+<div [hidden] = "visibility">
+    <app-update-user [username]="username"></app-update-user>
+</div>

@@ -11,11 +11,13 @@ import { User } from 'src/app/models/user';
 export class LoginComponent implements OnInit {
   public username : string;
   public password : string;
+  public visibility : boolean;
   constructor(private login : LoginService) {
 
    }
 
   ngOnInit(): void {
+    this.visibility = true;
   }
 
   loginFunc(){
@@ -29,6 +31,10 @@ export class LoginComponent implements OnInit {
     this.login.login(u).subscribe((data) => {
       console.log(data);
       u = data;
+      window.sessionStorage.setItem("username", u.username);
+      console.log();
+      this.visibility = false;
+      
     }, () => {
       console.log("No you goofed");
     })

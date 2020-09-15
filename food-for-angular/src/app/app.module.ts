@@ -11,9 +11,6 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { SearchApiComponent } from './components/search-api/search-api.component';
 import { HomeComponent } from './components/home/home.component';
-import { PreferenceComponent } from './models/preference/preference.component';
-
-
 
 
 
@@ -25,8 +22,8 @@ import { PreferenceComponent } from './models/preference/preference.component';
     AddUserComponent,
     LogoutComponent,
     SearchApiComponent,
-    HomeComponent,
-    PreferenceComponent
+    HomeComponent
+
   ],
   imports: [
     BrowserModule,

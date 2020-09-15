@@ -1,5 +1,5 @@
-<p>update-user works!</p>
-    <h2>Welcome to the User-Info page</h2>
+
+    <h2>Hello</h2>
     <div id= "view-form">
         <p>
 
@@ -8,23 +8,23 @@
     <input type="button" (click)="viewUser()" value="view user"/>
     <div id="edit-form" >
     <div>
-    <h6>Input info to upate your account</h6>
-        <p>change password:</p>
+    <h6>Input info to update your account</h6>
+        <p>Change password:</p>
         <input type="password" placeholder="PASSWORD" [(ngModel)]="password"/>
     </div>
         <p>Change diet:</p>
     <select  [(ngModel)]="diet">
         <option value=null>No Diet</option>
         <option value="GlutenFree">Gluten Free</option>
-        <option value="Paleo">Paleo</option>
-        <option value="keto">keto</option>
+        <option value="PALEO">Paleo</option>
+        <option value="KETOGENIC">keto</option>
     </select>
-    <p>Change minimum calories</p>
-    <input type="number"  [(ngModel)]="minCalories" placeholder="minimum calories"/>
-    <p>Chang Maximum calories</p>
-    <input type="number"  [(ngModel)]="maxCalories" value="maximum calories"/>
+    <p>Change minimum calories:</p>
+    <input type="number"  [(ngModel)]="minCalories" placeholder="min. calories"/>
+    <p>Change maximum calories:</p>
+    <input type="number"  [(ngModel)]="maxCalories" value="max. calories"/>
 
     <p>
-        <input type="button" (click)="updateUser()" value="update user"/>
+        <input type="button" (click)="updateUser()" value="Update"/>
     </p>
 </div>

@@ -12,7 +12,14 @@ export class LoginService {
   /* 
   Login service will have two fields, although it really only needs one
   1. the serviceUsername 
-  2. and the user field 
+  2. and a user object with the name serviceUser.
+
+  Now in the login component, we are setting our login service user, "serviceUser"
+  to the data.
+
+  Therefore, 
+  any component that inject login service should also have access to
+  the serviceUser field, and by extension the credentials of the user who has logged in.
   */
   serviceUsername : string;
   serviceUser : User;

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Recipe } from 'src/app/models/recipe';
 import { User } from 'src/app/models/user';
 import { HomeService } from 'src/app/services/home.service';
 
@@ -10,7 +9,7 @@ import { HomeService } from 'src/app/services/home.service';
 })
 export class HomeComponent implements OnInit {
 
-  recipe : Recipe;
+  recipes : string;
   
   constructor(private home : HomeService) { }
   
@@ -22,9 +21,9 @@ export class HomeComponent implements OnInit {
     this.home.home(u);
     this.home.home(u).subscribe((data)=>{
       console.log(data);
-      this.recipe = data;
+      this.recipes = JSON.stringify(data);
     }) , ()=>{
-      console.log("something went wrong");
+      this.recipes = "Error";
     } 
   }
 }

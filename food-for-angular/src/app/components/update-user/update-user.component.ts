@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UpdateInfoService } from 'src/app/services/update-info.service';
 import { User } from 'src/app/models/user';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-update-user',
@@ -13,15 +14,29 @@ export class UpdateUserComponent implements OnInit {
   diet : string;
   minCalories : number;
   maxCalories : number;
-
+  passedUsername : string;
+  user : User;
   @Input() username : string;
 
-  constructor(private update : UpdateInfoService) { }
+  constructor(private update : UpdateInfoService, private login : LoginService) { }
 
   ngOnInit(): void {
+    
   }
   viewUser(){
+    /*
+    When you come to the update-user component, you should be able to test 
+    if the serviceUser field is working correctly by pressing the "view user "
+    button.
 
+    It should print the user info of the user who logged in.
+
+    Temporarily, this is available while update-user and login components are on
+    the same page, because I do not know how to make a navbar yet.
+    */
+
+    this.user = this.login.serviceUser;
+    console.log(this.user);
   }
 
   updateUser(){

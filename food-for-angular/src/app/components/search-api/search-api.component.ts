@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-api.component.css']
 })
 export class SearchApiComponent implements OnInit {
-
+  diet : string;
   constructor() { }
 
   ngOnInit(): void {

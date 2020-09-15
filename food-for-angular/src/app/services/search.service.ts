@@ -37,4 +37,8 @@ export class SearchService {
     return this.http.get(req) as Observable<ResultDTO>;
   }
 
+  public getNutrientInfo(id : number){
+    
+  }
+
 }

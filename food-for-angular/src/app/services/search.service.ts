@@ -15,7 +15,7 @@ export class SearchService {
 
   public customSearch(preference : Preference) : Observable<ResultDTO>{
     let req : string = "https://api.spoonacular.com/recipes/complexSearch?" + 
-    "apiKey=f4f058137da84de2be93d7aa1b607872&number=1";
+    "apiKey=f4f058137da84de2be93d7aa1b607872&number=7";
 
     if (preference.query !=null){
       req = req.concat("&query="+preference.query);
@@ -38,7 +38,7 @@ export class SearchService {
   }
 
   public getNutrientInfo(id : number){
-    
+
   }
 
 }

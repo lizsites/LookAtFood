@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
       
       let arrRecipe : any[] = data.results;
       
-      console.log("arrRecipe" +arrRecipe[0]);
+      console.log("arrRecipe" +arrRecipe);
       console.log("arrRecipe title!!!! " +arrRecipe[0].title);
       console.log("arrRecipe calories" + arrRecipe[0].nutrition.nutrients[0].amount);
       

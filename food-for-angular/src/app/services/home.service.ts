@@ -14,7 +14,7 @@ export class HomeService {
 
   public home(u : User) : Observable<ResultDTO>{
     let req : string = "https://api.spoonacular.com/recipes/complexSearch?" + 
-    "apiKey=f4f058137da84de2be93d7aa1b607872&number=1";
+    "apiKey=f4f058137da84de2be93d7aa1b607872&number=6";
     if (u.diet !== null){
       req = req.concat("&diet=" + u.diet);
     }

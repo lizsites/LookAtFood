@@ -6,6 +6,7 @@
     <div *ngFor="let recipe of recipes">
         <p>{{recipe.title}}</p>
         <p>{{recipe.calories}}</p>
+        <button (click)="viewRecipe()">More Info</button>
     </div>
 </div>
 <!-- This will be where the api automatically presents recipes that match user diet -->

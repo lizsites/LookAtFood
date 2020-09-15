@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { HomeService } from 'src/app/services/home.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Recipe } from 'src/app/models/recipe';
+import { DescriptionDTO } from 'src/app/models/description-dto';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   
 
   ngOnInit(): void {
-    //using test maxCalories to see if the get works
+    //load recommended recipes
     this.u = this.login.serviceUser;
     this.home.home(this.u);
     this.home.home(this.u).subscribe((data)=>{
@@ -40,4 +41,14 @@ export class HomeComponent implements OnInit {
       console.log("error!");
     } 
   }
+  viewRecipe(id : number){
+    let desc : DescriptionDTO = new DescriptionDTO();
+    this.home.viewRecipe(id);
+    this.home.viewRecipe(id).subscribe((data)=>{
+        console.log(data);
+        desc = data
+      }, () =>{
+        console.log("error in the update user info");
+      });
+    }
 }

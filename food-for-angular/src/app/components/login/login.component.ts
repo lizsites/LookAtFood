@@ -30,9 +30,27 @@ export class LoginComponent implements OnInit {
     this.login.login(u);
     this.login.login(u).subscribe((data) => {
       console.log(data);
-      u = data;
-      window.sessionStorage.setItem("username", u.username);
-      console.log();
+    
+      /* 
+      So if, the post method is successful,
+      loginFunc() will do these things:
+      
+      It will retrieve user info from the back-end, 
+      and publish it as a user in our angular model.
+      Then we will set our loginService's user field to this data.
+
+      By Doing so, any component that injects the login service dependency
+      will also have the user credentials of a logged in user available.
+
+      It will print the data and the login service user to demonstrate that the two
+      are one in the same now.
+
+      
+      */
+
+
+      this.login.serviceUser = data;
+      console.log("login service user " + this.login.serviceUser);
       this.visibility = false;
       
     }, () => {

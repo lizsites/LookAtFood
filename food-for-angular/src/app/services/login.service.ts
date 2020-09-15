@@ -8,6 +8,15 @@ import { User } from '../models/user';
 })
 export class LoginService {
 
+
+  /* 
+  Login service will have two fields, although it really only needs one
+  1. the serviceUsername 
+  2. and the user field 
+  */
+  serviceUsername : string;
+  serviceUser : User;
+
   constructor(private http : HttpClient) { }
 
   public login(user :User) : Observable<User> {

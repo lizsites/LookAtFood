@@ -14,9 +14,6 @@ import { HomeComponent } from './components/home/home.component';
 
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +23,7 @@ import { HomeComponent } from './components/home/home.component';
     LogoutComponent,
     SearchApiComponent,
     HomeComponent
+
   ],
   imports: [
     BrowserModule,

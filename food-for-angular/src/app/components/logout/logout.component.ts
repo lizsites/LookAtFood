@@ -15,4 +15,16 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  public logoutFunc(){
+    let u : User = new User();
+    this.logout.logoutFunc(u).subscribe((data) => {
+      console.log(data);
+      u = data;
+    }, () => {
+      console.log("No you goofed");
+    });
+
+}
+
 }

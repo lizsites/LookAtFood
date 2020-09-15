@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { HomeComponent } from './components/home/home.component';
+import { SearchApiComponent } from './components/search-api/search-api.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path : "home",
     component : HomeComponent
+  },
+  {
+    path : "search",
+    component : SearchApiComponent
   }
 ];
 

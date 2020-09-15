@@ -12,4 +12,8 @@ export class SearchApiComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  search(){
+    
+  }
+
 }

@@ -1,1 +1,15 @@
-<input type="text" placeholder="SEARCH NAME" id="query"/><select id="cuisine"><option></option></select><input type="number" placeholder="minimum calories"/><input type="number" placeholder="maximum calories"/><button (click)="search()">Search</button>
+<input type="text" placeholder="SEARCH NAME" [(ngModel)]="query"/>
+<select [(ngModel)]="cuisine">
+    <option value="italian">italian</option>
+    <option value=null>null</option>
+</select>
+<input type="number" placeholder="minimum calories" [(ngModel)]="minCalories"/>
+<input type="number" placeholder="maximum calories" [(ngModel)]="maxCalories"/>
+<button (click)="searchApi()">Search</button>
+
+<div>
+    <div *ngFor="let recipe of recipes">
+        <p>{{recipe.title}}</p>
+        <p>{{recipe.calories}}</p>
+    </div>
+</div>

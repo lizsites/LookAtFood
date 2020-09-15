@@ -23,8 +23,11 @@ export class LoginService {
   */
   serviceUsername : string;
   serviceUser : User;
+  loggedIn : boolean;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) { 
+    this.loggedIn = false;
+  }
 
   public login(user :User) : Observable<User> {
     console.log("::::::::IN LOGIN SERVICE:::::::::::");

@@ -41,4 +41,8 @@ export class SearchService {
 
   }
 
+  getMoreInfo(id : number){
+    
+  }
+
 }

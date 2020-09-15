@@ -10,6 +10,10 @@
 <div>
     <div *ngFor="let recipe of recipes">
         <p>{{recipe.title}}</p>
-        <p>{{recipe.calories}}</p>
+        <div>
+            {{recipe.calories}}
+            <button (click)="getInfo({{recipe.id}})">See more info...</button>
+        </div>
+        
     </div>
 </div>

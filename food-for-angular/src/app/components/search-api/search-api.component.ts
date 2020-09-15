@@ -8,6 +8,7 @@ import { Preference } from 'src/app/models/preference';
   templateUrl: './search-api.component.html',
   styleUrls: ['./search-api.component.css']
 })
+
 export class SearchApiComponent implements OnInit {
  cuisine : string;
  minCalories : number;
@@ -19,6 +20,12 @@ export class SearchApiComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  getInfo(id : number){
+    console.log(id);
+    
+  }
+
 
   searchApi(){
     let preference : Preference = new Preference(this.query, this.maxCalories, this.minCalories, this.cuisine, null);
@@ -34,6 +41,7 @@ export class SearchApiComponent implements OnInit {
       
       for (let i = 0; i < arrRecipe.length; i++){
         this.recipes[i] = new Recipe();
+        this.recipes[i].id = arrRecipe[i].id;
         this.recipes[i].title = arrRecipe[i].title;
        
         console.log("recipe info " + this.recipes[i].title);

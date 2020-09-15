@@ -8,16 +8,43 @@ import { Preference } from 'src/app/models/preference';
   templateUrl: './search-api.component.html',
   styleUrls: ['./search-api.component.css']
 })
+
 export class SearchApiComponent implements OnInit {
  cuisine : string;
  minCalories : number;
  maxCalories : number;
  query : string;
-
+ recipeId : number;
+ lookingAtRecipe : boolean = true;
   recipes : Recipe[] = [];
   constructor(private search : SearchService) { }
 
   ngOnInit(): void {
+  }
+
+  getInfo(id : number){
+    console.log(id);
+    this.search.getMoreInfo(id);
+    this.search.getMoreInfo(id).subscribe((data)=>{
+      console.log(data);
+      this.lookingAtRecipe = !this.lookingAtRecipe;
+      let instructions : string = data.instructions;
+      let bodyDiv =document.createElement("div");
+      let par = document.createElement("p");
+      let button = document.createElement("button");
+      par.innerHTML = instructions;
+      par.id = "par";
+      button.onclick = this.hideInstructions;
+      button.innerHTML = "click to hide";
+      bodyDiv.appendChild(par);
+      document.getElementById("page-body").appendChild(bodyDiv);
+      document.getElementById("page-body").appendChild(bodyDiv);
+    })
+  }
+
+  hideInstructions(){
+    this.lookingAtRecipe = !this.lookingAtRecipe;
+    document.getElementById("par").style.visibility="hidden";
   }
 
   searchApi(){
@@ -35,7 +62,7 @@ export class SearchApiComponent implements OnInit {
       for (let i = 0; i < arrRecipe.length; i++){
         this.recipes[i] = new Recipe();
         this.recipes[i].title = arrRecipe[i].title;
-       
+        this.recipes[i].id = arrRecipe[i].id;
         console.log("recipe info " + this.recipes[i].title);
 
   }

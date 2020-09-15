@@ -7,9 +7,14 @@
 <input type="number" placeholder="maximum calories" [(ngModel)]="maxCalories"/>
 <button (click)="searchApi()">Search</button>
 
-<div>
+<div id="page-body">
+    <div [hidden]="lookingAtRecipe">
     <div *ngFor="let recipe of recipes">
-        <p>{{recipe.title}}</p>
-        <p>{{recipe.calories}}</p>
+            <span>{{recipe.id}}</span>
+            <p>{{recipe.title}}</p>
+            <p><button (click)="getInfo(recipe.id)">See more info...</button></p>
+            <p></p>
+        
     </div>
+</div>
 </div>

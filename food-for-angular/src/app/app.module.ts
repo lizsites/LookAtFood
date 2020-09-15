@@ -15,6 +15,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SearchApiComponent,
     HomeComponent,
     NavbarComponent
-
   ],
   imports: [
     BrowserModule,

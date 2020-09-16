@@ -12,7 +12,7 @@ export class HomeService {
 
   constructor(private http : HttpClient) { }
 
-  public home(u : User) : Observable<ResultDTO>{
+  public home(u : User) : Observable<any>{
     let req : string = "https://api.spoonacular.com/recipes/complexSearch?" + 
     "apiKey=f4f058137da84de2be93d7aa1b607872&number=6";
     if (u.diet !== null){
@@ -28,6 +28,6 @@ export class HomeService {
     
     console.log(":::::::request being sent!!! :::::");
     console.log(req);
-    return this.http.get(req) as Observable<ResultDTO>;
+    return this.http.get(req) as Observable<any>;
   }
 }

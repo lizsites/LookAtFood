@@ -2,11 +2,13 @@
 <div>
     <app-search-api></app-search-api>
 </div>
-<div>
+<!-- This will be where the api automatically presents recipes that match user diet -->
+<div id="auto_recipes">
     <div *ngFor="let recipe of recipes">
-        <p>{{recipe.title}}</p>
-        <p>{{recipe.calories}}</p>
-        <button (click)="viewRecipe()">More Info</button>
+            <span>{{recipe.id}}</span>
+            <p>{{recipe.title}}</p>
+            <p>{{recipe.calories}} {{recipe.description}}</p>
+            <p><button (click)="viewRecipe(recipe.id)">See more info...</button></p>
+            <p></p>      
     </div>
 </div>
-<!-- This will be where the api automatically presents recipes that match user diet -->

@@ -16,7 +16,6 @@ import {
 import {
   ResultDTO
 } from '../models/result-dto';
-import { DescriptionDTO } from '../models/description-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -45,11 +44,11 @@ export class HomeService {
     console.log(req);
     return this.http.get(req) as Observable < ResultDTO > ;
   }
-  public viewRecipe(id : number): Observable < DescriptionDTO > {
+  public viewRecipe(id : number): Observable < Recipe > {
     {
       let req: string = "https://api.spoonacular.com/recipes/{" + id + "}/information?" +
         "apiKey=f4f058137da84de2be93d7aa1b607872";
-      return this.http.get(req) as Observable<DescriptionDTO>;
+      return this.http.get(req) as Observable< Recipe >;
     }
   }
 }

@@ -1,6 +1,5 @@
 import {
   Component,
-  Input,
   OnInit
 } from '@angular/core';
 import {
@@ -24,9 +23,7 @@ import {
 export class HomeComponent implements OnInit {
 
   recipes: Recipe[] = [];
-  currentRecipe : Element;
   u: User;
-  lookingAtRecipe: boolean = false;
   constructor(private home: HomeService, private login: LoginService) {}
 
 
@@ -59,13 +56,11 @@ export class HomeComponent implements OnInit {
     this.home.viewRecipe(id);
     this.home.viewRecipe(id).subscribe((data)=>{
       console.log(data);
-      this.lookingAtRecipe = !this.lookingAtRecipe;
       let instructions : string = data.instructions;
       let bodyDiv = document.createElement("div");
       let par = document.createElement("p");
       let button = document.createElement("button");
       par.innerHTML = instructions;
-      par.id = "par";
       button.innerHTML = "click to hide";
       bodyDiv.appendChild(par);
       document.getElementById("auto_recipes").appendChild(bodyDiv);

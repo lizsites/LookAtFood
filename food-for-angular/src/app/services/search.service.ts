@@ -13,42 +13,42 @@ export class SearchService {
 
   constructor(private http : HttpClient) { }
 
-  public customSearch(preference : Preference) : Observable<ResultDTO>{
+  public customSearch(query : string, cuisine : string, minCalories : number, maxCalories : number, diet : string) : Observable<any>{
     let req : string = "https://api.spoonacular.com/recipes/complexSearch?" + 
     "apiKey=f4f058137da84de2be93d7aa1b607872&number=7";
 
-    console.log(preference);
+    console.log();
 
-    if (preference.query !=null){
-      req = req.concat("&query="+preference.query);
+    if (query !=null){
+      req = req.concat("&query="+query);
     }
 
-    if (preference.cuisine != null){
-      req = req.concat("&cuisine=" + preference.cuisine);
+    if (cuisine != null){
+      req = req.concat("&cuisine=" + cuisine);
     }
-    if (preference.minCalories != null){
-      req = req.concat("&minCalories="+preference.minCalories);
+    if (minCalories != null){
+      req = req.concat("&minCalories="+minCalories);
     }
-    if (preference.maxCalories != null){
-      req = req.concat("&maxCalories="+preference.maxCalories);
+    if (maxCalories != null){
+      req = req.concat("&maxCalories="+maxCalories);
     }
 
     
     console.log(":::::::request being sent!!! :::::");
     console.log(req);
-    return this.http.get(req) as Observable<ResultDTO>;
+    return this.http.get(req) as Observable<any>;
   }
 
   public getNutrientInfo(id : number){
 
   }
 
-  getMoreInfo(id : number) : Observable<Recipe>{
+  getMoreInfo(id : number) : Observable<any>{
     let req : string = "https://api.spoonacular.com/recipes/" +
     id + "/information?includeNutrition=true" +
     "&apiKey=f4f058137da84de2be93d7aa1b607872&number=1";
     console.log(req);
-    return this.http.get(req) as Observable<Recipe>;
+    return this.http.get(req) as Observable<any>;
   }
 
 }

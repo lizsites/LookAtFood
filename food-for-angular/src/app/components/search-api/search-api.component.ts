@@ -15,7 +15,7 @@ export class SearchApiComponent implements OnInit {
  maxCalories : number;
  query : string;
  recipeId : number;
- lookingAtRecipe : boolean = true;
+ lookingAtRecipe : boolean;
   recipes : Recipe[] = [];
   constructor(private search : SearchService) { }
 
@@ -27,30 +27,35 @@ export class SearchApiComponent implements OnInit {
     this.search.getMoreInfo(id);
     this.search.getMoreInfo(id).subscribe((data)=>{
       console.log(data);
-      this.lookingAtRecipe = !this.lookingAtRecipe;
-      let instructions : string = data.instructions;
+      this.lookingAtRecipe = true;
+      let instructions : any[] = data.analyzedInstructions[0].steps;
+      for (let instruction of instructions){
+        let step = document.createElement("p");
+        step.innerHTML = instruction.step;
+        document.getElementById("page-body").appendChild(step);
+      }
       let bodyDiv =document.createElement("div");
       let par = document.createElement("p");
       let button = document.createElement("button");
-      par.innerHTML = instructions;
+      
       par.id = "par";
       button.onclick = this.hideInstructions;
       button.innerHTML = "click to hide";
       bodyDiv.appendChild(par);
       document.getElementById("page-body").appendChild(bodyDiv);
-      document.getElementById("page-body").appendChild(bodyDiv);
+      document.getElementById("page-body").appendChild(button);
     })
   }
 
   hideInstructions(){
     this.lookingAtRecipe = !this.lookingAtRecipe;
-    document.getElementById("par").style.visibility="hidden";
+    document.getElementById("par").innerHTML="";
   }
 
   searchApi(){
-    let preference : Preference = new Preference(this.query, this.maxCalories, this.minCalories, this.cuisine, null);
-    this.search.customSearch(preference);
-    this.search.customSearch(preference).subscribe((data)=>{
+    
+    this.search.customSearch(this.query,this.cuisine,this.minCalories,this.maxCalories, null);
+    this.search.customSearch(this.query,this.cuisine,this.minCalories,this.maxCalories, null).subscribe((data)=>{
       console.log(data);
       
       let arrRecipe : any[] = data.results;

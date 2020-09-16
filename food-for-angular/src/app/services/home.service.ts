@@ -24,11 +24,13 @@ export class HomeService {
 
   constructor(private http: HttpClient) {}
 
-  public home(u: User): Observable < ResultDTO > {
+  public home(u: User): Observable < any > {
     let req: string = "https://api.spoonacular.com/recipes/complexSearch?" +
       "apiKey=f4f058137da84de2be93d7aa1b607872&number=6&sort=random";
       //parameter sort=random will randomize the retrieved recipes so they're not the same each time
       //should use this in the custom search too
+	  
+	  //todo: update home to match changes in search-api
     if (u.diet !== null) {
       req = req.concat("&diet=" + u.diet);
     }
@@ -39,7 +41,6 @@ export class HomeService {
       req = req.concat("&maxCalories=" + u.maxCalories);
     }
 
-
     console.log(":::::::request being sent!!! :::::");
     console.log(req);
     return this.http.get(req) as Observable < ResultDTO > ;
@@ -48,7 +49,6 @@ export class HomeService {
     {
       let req: string = "https://api.spoonacular.com/recipes/{" + id + "}/information?" +
         "apiKey=f4f058137da84de2be93d7aa1b607872";
-      return this.http.get(req) as Observable< Recipe >;
-    }
+    return this.http.get(req) as Observable<any>;
   }
 }

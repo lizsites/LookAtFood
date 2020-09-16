@@ -3,5 +3,5 @@ export class Recipe {
     title : string;
     calories : number;
     description : string;
-    instructions : string;
+    analyzedInstructions : string[];
 }

@@ -12,7 +12,7 @@ export class RegisterService {
 
   public register(user :User) : Observable<User> {
     let jsonUser : string = JSON.stringify(user);
-    return this.http.post("http://localhost:8080/JenkinsRepo/user", jsonUser, {
+    return this.http.post("http://localhost:8089/food/register", jsonUser, {
 
       headers : {
       'Content-Type': 'application/json',

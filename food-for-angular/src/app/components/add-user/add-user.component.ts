@@ -6,6 +6,7 @@ import { Preference } from 'src/app/models/preference';
 import { MinLengthValidator } from '@angular/forms';
 import { Md5 } from 'ts-md5';
 
+
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',

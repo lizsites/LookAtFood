@@ -5,6 +5,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { Preference } from 'src/app/models/preference';
 import { Md5 } from 'ts-md5';
 
+
 @Component({
   selector: 'app-update-user',
   templateUrl: './update-user.component.html',
@@ -42,6 +43,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser(){
+
     let u : User = this.login.serviceUser;
     u.password = Md5.hashStr(this.password).toString().toUpperCase();
     u.preference = new Preference(u.preference.id,this.minCalories,this.maxCalories,this.diet);

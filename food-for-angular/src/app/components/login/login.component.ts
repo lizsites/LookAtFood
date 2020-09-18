@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     u.id = null;
     u.preference = new Preference(null,0,0,null);
     console.log(u);
-    this.login.login(u);
     this.login.login(u).subscribe((data) => {
       console.log(data);
     

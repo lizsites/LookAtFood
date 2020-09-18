@@ -10,10 +10,17 @@ export class LogoutService {
 
   constructor(private http : HttpClient) { }
   
-  public logoutFunc(u : User) : Observable<any>
+  public logoutFunc() : Observable<any>
   {
-   return this.http.post("http://localhost:8089/food/logout",{
-  withCredentials : true
+   return this.http.post("http://localhost:8089/food/logout/",{
+    headers : {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
+      },
+      withCredentials : true,
+      responseType : "json"
    }) as Observable<any>;
   }
 }

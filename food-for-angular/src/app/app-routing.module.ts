@@ -9,7 +9,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   {
-    path : "login",
+    path : "",
     component : LoginComponent
   },
   {

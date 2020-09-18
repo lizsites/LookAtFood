@@ -23,7 +23,7 @@ export class UpdateUserComponent implements OnInit {
   constructor(private update : UpdateInfoService, private login : LoginService) { }
 
   ngOnInit(): void {
-   
+   this.password = this.login.serviceUser.password;
   }
   viewUser(){
     /*

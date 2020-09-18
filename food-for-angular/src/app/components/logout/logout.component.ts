@@ -18,8 +18,7 @@ export class LogoutComponent implements OnInit {
 
    public logoutFunc(){
   
-     this.logout.logoutFunc(this.login.serviceUser);
-       this.logout.logoutFunc(this.login.serviceUser).subscribe(() => {
+     this.logout.logoutFunc().subscribe(() => {
        }, () => {
       console.log("No you goofed");
       });

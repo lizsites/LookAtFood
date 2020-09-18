@@ -2,16 +2,16 @@ import { StringifyOptions } from 'querystring';
 
 export class Preference {
    
+    id : number;
     minCalories : number;
     maxCalories : number;
-    diet : string;
+    dietType : string;
     
-    constructor( minCalories : number, maxCalories : number, diet : string){
-       
+    constructor( id: number, minCalories : number, maxCalories : number, diet : string){
+        this.id = id;
         this.maxCalories = maxCalories;
         this.minCalories = minCalories;
-      
-        this.diet = diet;
+        this.dietType = diet;
     }
 
 }

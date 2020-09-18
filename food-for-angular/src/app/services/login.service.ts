@@ -35,7 +35,7 @@ export class LoginService {
     // user.username = "betty1";
     // user.password = "destroyah";
     let jsonUser : string = JSON.stringify(user);
-    return this.http.post("http://localhost:8080/JenkinsRepo/login", jsonUser, {
+    return this.http.post("http://localhost:8089/food/login", jsonUser, {
 
       headers : {
       'Content-Type': 'application/json',

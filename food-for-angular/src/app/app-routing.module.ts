@@ -5,10 +5,11 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchApiComponent } from './components/search-api/search-api.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   {
-    path : "login",
+    path : "",
     component : LoginComponent
   },
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path : "search",
     component : SearchApiComponent
+  },
+  {
+    path : "logout",
+    component : LogoutComponent
   }
 ];
 

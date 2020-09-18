@@ -12,6 +12,8 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { SearchApiComponent } from './components/search-api/search-api.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
+import { CookbookComponent } from './components/cookbook/cookbook.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LogoutComponent,
     HomeComponent,
     NavbarComponent,
-    SearchApiComponent
+    SearchApiComponent,
+    RecipeFormComponent,
+    CookbookComponent
   ],
   imports: [
     BrowserModule,

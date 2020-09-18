@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UpdateInfoService } from 'src/app/services/update-info.service';
 import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
+import { Preference } from 'src/app/models/preference';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-update-user',
@@ -21,7 +23,7 @@ export class UpdateUserComponent implements OnInit {
   constructor(private update : UpdateInfoService, private login : LoginService) { }
 
   ngOnInit(): void {
-    
+   
   }
   viewUser(){
     /*
@@ -40,16 +42,13 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser(){
-    let u : User= new User();
-    u.username = this.username;
-    u.password = this.password;
-    u.diet = this.diet;
-    u.minCalories = this.minCalories;
-    u.maxCalories = this.maxCalories;
+    let u : User = this.login.serviceUser;
+    u.password = Md5.hashStr(this.password).toString().toUpperCase();
+    u.preference = new Preference(u.preference.id,this.minCalories,this.maxCalories,this.diet);
     console.log(u);
     this.update.updateUserInfo(u);
     this.update.updateUserInfo(u).subscribe((data)=>{
-      console.log(data);
+      console.log("data returned " + data);
       u = data;
       window.sessionStorage.setItem("user", u.username)}, () =>{
         console.log("error in the update user info");

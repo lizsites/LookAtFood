@@ -16,7 +16,7 @@ export class UpdateInfoService {
     // user.password = "destroyah";
     let jsonUser : string = JSON.stringify(user);
     console.log(jsonUser);
-    return this.http.post("http://localhost:8080/JenkinsRepo/update/", jsonUser, {
+    return this.http.put("http://localhost:8089/food/updateInfo/", jsonUser, {
 
       headers : {
       'Content-Type': 'application/json',

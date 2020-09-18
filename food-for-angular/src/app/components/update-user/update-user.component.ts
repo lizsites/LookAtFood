@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UpdateInfoService } from 'src/app/services/update-info.service';
 import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-update-user',
@@ -42,7 +43,7 @@ export class UpdateUserComponent implements OnInit {
   updateUser(){
     let u : User= new User();
     u.username = this.username;
-    u.password = this.password;
+    u.password = Md5.hashStr(this.password).toString().toUpperCase();
     u.diet = this.diet;
     u.minCalories = this.minCalories;
     u.maxCalories = this.maxCalories;

@@ -1,21 +1,23 @@
 <app-navbar></app-navbar>
-<input type="text" placeholder="SEARCH NAME" [(ngModel)]="query"/>
+<input type="text" placeholder="SEARCH NAME" [(ngModel)]="query" />
 <select [(ngModel)]="cuisine">
     <option value="italian">italian</option>
     <option value=null>null</option>
 </select>
-<input type="number" placeholder="minimum calories" [(ngModel)]="minCalories"/>
-<input type="number" placeholder="maximum calories" [(ngModel)]="maxCalories"/>
+<input type="number" placeholder="minimum calories" [(ngModel)]="minCalories" />
+<input type="number" placeholder="maximum calories" [(ngModel)]="maxCalories" />
 <button (click)="searchApi()">Search</button>
 
 <div id="page-body">
     <div [hidden]="lookingAtRecipe">
-    <div *ngFor="let recipe of recipes">
+        <div *ngFor="let recipe of recipes">
             <span>{{recipe.id}}</span>
             <p>{{recipe.title}}</p>
             <p><button (click)="getInfo(recipe.id)">See more info...</button></p>
             <p></p>
-        
+
+        </div>
     </div>
 </div>
-</div>
+<!--show recipe form component if user has clicked a save recipe button-->
+<app-recipe-form [hidden]="!saving"></app-recipe-form>

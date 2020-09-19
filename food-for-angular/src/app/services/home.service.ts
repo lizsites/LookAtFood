@@ -52,20 +52,4 @@ export class HomeService {
     return this.http.get(req) as Observable<any>;
   }
 }
-  public saveRecipe(cr : Recipe): Observable < any > {
-    //todo: allow editing of recipe through recipe component form
-    let jsonRecipe : string = JSON.stringify(cr);
-    {
-      return this.http.post("http://localhost:8089/food/recipe", jsonRecipe, {
-        headers : {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Origin': '*',
-        },
-        withCredentials : true,
-        responseType : "json"
-      }) as Observable<any>;
-    }
-  }
 }

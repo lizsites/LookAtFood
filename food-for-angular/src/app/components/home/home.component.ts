@@ -14,6 +14,7 @@ import {
 import {
   Recipe
 } from 'src/app/models/recipe';
+import { SaveRecipeService } from 'src/app/services/save-recipe.service';
 
 @Component({
   selector: 'app-home',
@@ -25,8 +26,9 @@ export class HomeComponent implements OnInit {
   recipes: Recipe[] = [];
   currentRecipe : Recipe;
   u: User;
-  constructor(private home: HomeService, private login: LoginService) {}
+  constructor(private home: HomeService, private login: LoginService, private save: SaveRecipeService) {}
   lookingAtRecipe : boolean = false;
+  saving : boolean = false;
 
   ngOnInit(): void {
     //load recommended recipes
@@ -74,18 +76,15 @@ export class HomeComponent implements OnInit {
       
       saveButton.innerHTML = "save recipe";
       
-      saveButton.addEventListener("click", this.saveRecipe);;
+      saveButton.addEventListener("onclick", this.saveRecipe);
       info.appendChild(saveButton);
     
     })
     }
     saveRecipe(){
-      this.home.saveRecipe(this.currentRecipe).subscribe((data)=>{
-        console.log("recipe saved");
-      },()=>
-      {
-        console.log("failed to save recipe");
-      });
+      //show recipe-form component
+      this.saving = true;
+      this.save.saveRecipe(this.currentRecipe);
     }
   }
   

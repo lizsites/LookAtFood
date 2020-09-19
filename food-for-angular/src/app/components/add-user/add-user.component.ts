@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from 'src/app/services/register.service';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { User } from 'src/app/models/user';
 import { Preference } from 'src/app/models/preference';
-import { MinLengthValidator } from '@angular/forms';
 import { Md5 } from 'ts-md5';
 
 

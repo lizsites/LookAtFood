@@ -1,1 +1,9 @@
-<p>recipe-form works!</p>
+<p>Editing recipe</p>
+<div id = "formDiv">
+    Recipe title: <input type="text" id="title" [(ngModel)]="currentRecipe.title"/>
+    Calories: <input type="number" id="calories" [(ngModel)]="currentRecipe.calories"/>
+    Summary: <input type="text" id="description" [(ngModel)]="currentRecipe.description"/>
+    <!--todo: figure out how we want to display inputs for editing steps.
+    Recipe.analyzedInstructions is a String array, is this JSON?-->
+    Instructions: <input type="text" id="instructions" [(ngModel)]="currentRecipe.analyzedInstructions"/>
+</div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe';
 import { SearchService } from 'src/app/services/search.service';
-import { Preference } from 'src/app/models/preference';
 
 @Component({
   selector: 'app-search-api',
@@ -24,7 +23,6 @@ export class SearchApiComponent implements OnInit {
 
   getInfo(id : number){
     console.log(id);
-    this.search.getMoreInfo(id);
     this.search.getMoreInfo(id).subscribe((data)=>{
       console.log(data);
       this.lookingAtRecipe = true;
@@ -53,8 +51,7 @@ export class SearchApiComponent implements OnInit {
   }
 
   searchApi(){
-    
-    this.search.customSearch(this.query,this.cuisine,this.minCalories,this.maxCalories, null);
+
     this.search.customSearch(this.query,this.cuisine,this.minCalories,this.maxCalories, null).subscribe((data)=>{
       console.log(data);
       

@@ -23,14 +23,14 @@ import {
 export class HomeComponent implements OnInit {
 
   recipes: Recipe[] = [];
+  currentRecipe : Recipe;
   u: User;
   constructor(private home: HomeService, private login: LoginService) {}
-
+  lookingAtRecipe : boolean = false;
 
   ngOnInit(): void {
     //load recommended recipes
     this.u = this.login.serviceUser;
-    this.home.home(this.u);
     this.home.home(this.u).subscribe((data) => {
       console.log(data);
 
@@ -51,19 +51,41 @@ export class HomeComponent implements OnInit {
       console.log("error!");
     }
   }
-  viewRecipe(id: number) {
+  viewRecipe(id : number) {
+    this.currentRecipe = this.recipes[id];
     console.log(id);
-    this.home.viewRecipe(id);
     this.home.viewRecipe(id).subscribe((data)=>{
       console.log(data);
-      let instructions : string = data.instructions;
+      this.lookingAtRecipe = true;
+      let instructions : any[] = data.analyzedInstructions[0].steps;
+      let info = document.getElementById("recipe_info");
+      for (let instruction of instructions){
+        //print each step
+        let step = document.createElement("p");
+        step.innerHTML = instruction.step;
+        info.appendChild(step);
+      }
       let bodyDiv = document.createElement("div");
-      let par = document.createElement("p");
-      let button = document.createElement("button");
-      par.innerHTML = instructions;
-      button.innerHTML = "click to hide";
-      bodyDiv.appendChild(par);
-      document.getElementById("auto_recipes").appendChild(bodyDiv);
+      
+      info.appendChild(bodyDiv);
+      //let hideButton = document.createElement("button");
+      //hideButton.innerHTML = "click to hide";
+      let saveButton = document.createElement("button");
+      
+      saveButton.innerHTML = "save recipe";
+      
+      saveButton.addEventListener("click", this.saveRecipe);;
+      info.appendChild(saveButton);
+    
     })
     }
+    saveRecipe(){
+      this.home.saveRecipe(this.currentRecipe).subscribe((data)=>{
+        console.log("recipe saved");
+      },()=>
+      {
+        console.log("failed to save recipe");
+      });
+    }
   }
+  

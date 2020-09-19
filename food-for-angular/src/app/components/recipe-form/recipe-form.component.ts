@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Recipe } from 'src/app/models/recipe';
 
 @Component({
   selector: 'app-recipe-form',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-form.component.css']
 })
 export class RecipeFormComponent implements OnInit {
-
+  currentRecipe : Recipe;
+  formDiv : Element;
   constructor() { }
 
   ngOnInit(): void {
+    this.formDiv = document.getElementById("formDiv");
   }
 
 }

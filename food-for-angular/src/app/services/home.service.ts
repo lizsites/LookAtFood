@@ -43,12 +43,29 @@ export class HomeService {
 
     console.log(":::::::request being sent!!! :::::");
     console.log(req);
-    return this.http.get(req) as Observable < ResultDTO > ;
+    return this.http.get(req) as Observable < any > ;
   }
-  public viewRecipe(id : number): Observable < Recipe > {
+  public viewRecipe(id : number): Observable < any > {
     {
       let req: string = "https://api.spoonacular.com/recipes/{" + id + "}/information?" +
         "apiKey=f4f058137da84de2be93d7aa1b607872";
     return this.http.get(req) as Observable<any>;
+  }
+}
+  public saveRecipe(cr : Recipe): Observable < any > {
+    //todo: allow editing of recipe through recipe component form
+    let jsonRecipe : string = JSON.stringify(cr);
+    {
+      return this.http.post("http://localhost:8089/food/recipe", jsonRecipe, {
+        headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Origin': '*',
+        },
+        withCredentials : true,
+        responseType : "json"
+      }) as Observable<any>;
+    }
   }
 }

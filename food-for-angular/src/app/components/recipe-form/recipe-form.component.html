@@ -1,1 +1,37 @@
-<p>recipe-form works!</p>
+
+<form [formGroup]="RecipeForm" (ngSubmit)="onSubmit()">
+<div>
+    <label>
+        Title:
+        <input type="text" formControlName="title">
+    </label>
+</div>
+<div>
+    <label>
+        Summary:
+        <input type="text" formControlName="summary">
+    </label>
+</div>
+<div formArrayName="ingredients">
+    <h3>Ingredients:</h3>
+    <button (click)="addIngredient()">Add a Ingredient</button>
+    <div *ngFor="let ingredient of ingredients.controls; let i = index;">
+        <label>
+            <input type="text" [formControlName]="i">
+        </label>
+    </div>
+</div>
+<div formArrayName="steps">
+    <h3>Steps:</h3>
+    <button (click)="addStep()">Add a Step</button>
+    <div *ngFor="let step of steps.controls; let i = index">
+        <label>
+            <input type="text" [formControlName]="i">
+        </label>
+    </div>
+</div>
+<div id="submit">
+    {{RecipeForm.value | json}} 
+    <button type="submit" [disabled]="!RecipeForm.valid">Submit</button>
+</div>
+</form>

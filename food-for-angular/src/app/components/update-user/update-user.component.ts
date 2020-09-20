@@ -46,7 +46,6 @@ export class UpdateUserComponent implements OnInit {
     u.password = Md5.hashStr(this.password).toString().toUpperCase();
     u.preference = new Preference(u.preference.id,this.minCalories,this.maxCalories,this.diet);
     console.log(u);
-    this.update.updateUserInfo(u);
     this.update.updateUserInfo(u).subscribe((data)=>{
       console.log("data returned " + data);
       u = data;

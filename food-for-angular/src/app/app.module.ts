@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from "@angular/forms";
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { CookbookComponent } from './components/cookbook/cookbook.component';
+
 
 
 
@@ -35,7 +36,8 @@ import { CookbookComponent } from './components/cookbook/cookbook.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

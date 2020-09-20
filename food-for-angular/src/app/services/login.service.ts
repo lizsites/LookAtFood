@@ -35,15 +35,14 @@ export class LoginService {
     // user.username = "betty1";
     // user.password = "destroyah";
     let jsonUser : string = JSON.stringify(user);
-    return this.http.post("http://localhost:8089/food/login", jsonUser, {
-
+    return this.http.post("http://localhost:8090/food/login", jsonUser, {
+      withCredentials : true,
       headers : {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Origin': '*',
       },
-      withCredentials : true,
       responseType : "json"
     }) as Observable<User>;
   }

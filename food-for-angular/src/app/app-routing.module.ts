@@ -6,6 +6,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { HomeComponent } from './components/home/home.component';
 import { SearchApiComponent } from './components/search-api/search-api.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path : "logout",
     component : LogoutComponent
+  },
+  {
+    path : "recipe",
+    component : RecipeFormComponent
   }
 ];
 

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe';
 import { SearchService } from 'src/app/services/search.service';
 import { Preference } from 'src/app/models/preference';
-
+import { RecipeFormService } from 'src/app/services/recipe-form.service';
+import { Step } from 'src/app/models/step';
+import { Ingredient } from 'src/app/models/ingredient';
 @Component({
   selector: 'app-search-api',
   templateUrl: './search-api.component.html',
@@ -17,14 +19,13 @@ export class SearchApiComponent implements OnInit {
  recipeId : number;
  lookingAtRecipe : boolean;
   recipes : Recipe[] = [];
-  constructor(private search : SearchService) { }
+  constructor(private search : SearchService, private rf : RecipeFormService) { }
 
   ngOnInit(): void {
   }
 
   getInfo(id : number){
     console.log(id);
-    this.search.getMoreInfo(id);
     this.search.getMoreInfo(id).subscribe((data)=>{
       console.log(data);
       this.lookingAtRecipe = true;
@@ -54,7 +55,7 @@ export class SearchApiComponent implements OnInit {
 
   searchApi(){
     
-    this.search.customSearch(this.query,this.cuisine,this.minCalories,this.maxCalories, null);
+
     this.search.customSearch(this.query,this.cuisine,this.minCalories,this.maxCalories, null).subscribe((data)=>{
       console.log(data);
       
@@ -74,5 +75,37 @@ export class SearchApiComponent implements OnInit {
 
     })
 
+  }
+
+  saveRecipe(recipe : Recipe){
+    this.search.getMoreInfo(recipe.id).subscribe((data)=>{
+
+      console.log("data being retrieved :" + data);
+
+      for (let i = 0; i < data.analyzedInstructions[0].steps.length; i++){
+        let step : Step = new Step();
+        recipe.recipeStep[i] = step;     
+        step.stepNum = data.analyzedInstructions[0].steps[i].number;
+        step.body = data.analyzedInstructions[0].steps[i].step;
+        step.recipe = recipe;
+        
+      }
+      for (let i = 0; i < data.extendedIngredients.length; i++){
+        let ingredient = new Ingredient();
+        recipe.ingredients.push(ingredient);
+        ingredient.name = data.extendedIngredients[i].original;
+        ingredient.recipe = recipe;
+       
+      }
+      //This knocks off lengthier summaries
+      let firstSentenace = data.summary.split('.');
+      recipe.summary = firstSentenace[0] + ".";
+      console.log(data);
+      this.rf.setRecipeForm(recipe);
+    }, ()=>{
+
+    });
+
+    
   }
 }

@@ -16,7 +16,7 @@ import { RecipeFormComponent } from './components/recipe-form/recipe-form.compon
 import { CookbookComponent } from './components/cookbook/cookbook.component';
 import { PictureComponent } from './components/picture/picture.component';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     RecipeFormComponent,
     CookbookComponent,
     PictureComponent, 
-    FileUploadModule
+    FileUploadModule, 
+    FileSelectDirective
 
   ],
   imports: [

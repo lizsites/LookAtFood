@@ -13,7 +13,7 @@ import { FileUploader } from 'ng2-file-upload';
 export class PictureComponent implements OnInit {
   // @ViewChild("fileUpload", {static: false}) 
   // fileUpload: ElementRef;files = [];
-  uploader: FileUploader = new FileUploader({ url: "api/your_upload", removeAfterUpload: false, autoUpload: true });
+  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
   constructor(private uploadService: UploadService) { }
 
   ngOnInit(): void {

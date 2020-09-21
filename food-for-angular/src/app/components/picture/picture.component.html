@@ -1,4 +1,9 @@
 <section>
     <h2>Upload a picture of your creation!:</h2>
     <input type="file" name="photo" id="pic" placeholder="Upload picture" ng2FileSelect [uploader]="uploader"/>
+    <button type="button" class="btn btn-success btn-s" 
+  (click)="uploader.uploadAll()" 
+  [disabled]="!uploader.getNotUploadedItems().length" >
+      Upload an Image
+</button>
 </section>

@@ -3,7 +3,7 @@ import { UploadService } from 'src/app/services/upload.service';
 import {HttpEventType, HttpErrorResponse} from '@angular/common/http';
 import {of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileSelectDirective } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-picture',
@@ -13,10 +13,16 @@ import { FileUploader } from 'ng2-file-upload';
 export class PictureComponent implements OnInit {
   // @ViewChild("fileUpload", {static: false}) 
   // fileUpload: ElementRef;files = [];
-  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
-  constructor(private uploadService: UploadService) { }
+  title = 'Upload a File';
+  public uploader: FileUploader = new FileUploader({url: "/upload", itemAlias: 'photo'});
+  // constructor(private uploadService: UploadService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+         console.log('FileUpload:uploaded:', item, status, response);
+         alert('File uploaded successfully');
+     };
   }
 
 //   uploadFile(file) {

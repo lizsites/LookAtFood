@@ -17,9 +17,10 @@ export class RecipeFormComponent implements OnInit {
 
   stepCount : number;
 
-  RecipeForm = new FormGroup({
+  RecipeForm = this.fb.group({
     title : new FormControl('', Validators.required),
     summary : new FormControl(''),
+    calories : new FormControl(''),
     ingredients : this.fb.array([
       //this.fb.control('')
     ]),

@@ -30,7 +30,6 @@ export class AddUserComponent implements OnInit {
     u.id = null;
     u.preference = new Preference(null,0,0,null);
     console.log(u);
-    this.register.register(u);
     this.register.register(u).subscribe((data) => {
       console.log(data);
       u = data;

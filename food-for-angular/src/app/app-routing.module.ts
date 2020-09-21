@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchApiComponent } from './components/search-api/search-api.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
+import { CookbookComponent } from './components/cookbook/cookbook.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path : "recipe",
     component : RecipeFormComponent
+  },
+  {
+    path : "cookbook",
+    component : CookbookComponent
   }
 ];
 

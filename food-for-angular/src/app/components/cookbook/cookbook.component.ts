@@ -14,6 +14,7 @@ export class CookbookComponent implements OnInit {
   ngOnInit(): void {
     if (this.login.serviceUser!==null && this.login.loggedIn){
       this.recipes = this.login.serviceUser.recipes;
+      console.log("Initiated cookbook recipes :" + this.recipes)
     }
   }
 

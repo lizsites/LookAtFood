@@ -14,8 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { CookbookComponent } from './components/cookbook/cookbook.component';
-
-
+import { PictureComponent } from './components/picture/picture.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -29,7 +29,9 @@ import { CookbookComponent } from './components/cookbook/cookbook.component';
     NavbarComponent,
     SearchApiComponent,
     RecipeFormComponent,
-    CookbookComponent
+    CookbookComponent,
+    PictureComponent, 
+    FileUploadModule
 
   ],
   imports: [

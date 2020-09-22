@@ -8,6 +8,6 @@ export class Recipe {
     title : string;
     calories : number;
     summary : string;
-    recipeStep : Step[] = [] as Step[];
+    recipeSteps : Step[] = [] as Step[];
     ingredients : Ingredient[] = [] as Ingredient[];
 }

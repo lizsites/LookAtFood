@@ -8,6 +8,7 @@ import { SearchApiComponent } from './components/search-api/search-api.component
 import { LogoutComponent } from './components/logout/logout.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { CookbookComponent } from './components/cookbook/cookbook.component';
+import { PictureComponent } from './components/picture/picture.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,11 @@ const routes: Routes = [
   {
     path : "cookbook",
     component : CookbookComponent
-  }
+  },
+  {
+  path : "upload",
+  component : PictureComponent
+}
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { UploadService } from 'src/app/services/upload.service';
-import {HttpEventType, HttpErrorResponse} from '@angular/common/http';
-import {of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
-import { FileUploader, FileSelectDirective } from 'ng2-file-upload';
+import { FormBuilder, FormGroup } from  '@angular/forms';
+import { User } from 'src/app/models/user';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-picture',
@@ -11,53 +11,45 @@ import { FileUploader, FileSelectDirective } from 'ng2-file-upload';
   styleUrls: ['./picture.component.css']
 })
 export class PictureComponent implements OnInit {
-  // @ViewChild("fileUpload", {static: false}) 
-  // fileUpload: ElementRef;files = [];
-  title = 'Upload a File';
-  public uploader: FileUploader = new FileUploader({url: "/upload", itemAlias: 'photo'});
-  // constructor(private uploadService: UploadService) { }
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
 
-  ngOnInit(){
-    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-         console.log('FileUpload:uploaded:', item, status, response);
-         alert('File uploaded successfully');
-     };
+  user : User;
+  //change this to get userId
+
+  fileInfos: Observable<any>;
+
+  constructor(private uploadService: UploadService) { }
+  ngOnInit(): void {
+    // this.fileInfos = this.uploadService.getFiles();
   }
 
-//   uploadFile(file) {
-//       const formData = new FormData();  
-//       formData.append('file', file.data);  
-//       file.inProgress = true;
-//       this.uploadService.upload(formData).pipe(
-//         map(event => {
-//           switch (event.type) {
-//             case HttpEventType.UploadProgress:
-//               file.progress = Math.round(event.loaded * 100 / event.total);
-//               break;
-//             case HttpEventType.Response:
-//               return event;
-//           }  
-//         }),  
-//         catchError((error: HttpErrorResponse) => {
-//           file.inProgress = false;
-//           return of(`Upload failed: ${file.data.name}`);
-//         })).subscribe((event: any) => {
-//           if (typeof (event) === 'object') {
-//             console.log(event.body);
-//           }  
+  selectFile(event): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(): void {
+    this.progress = 0;
   
-//         });  
-//         onClick() {
-//               const fileUpload = this.fileUpload.nativeElement;fileUpload.onchange = () => {
-//               for (let index = 0; index < fileUpload.files.length; index++)
-//               {
-//                const file = fileUpload.files[index];
-//                this.files.push({ data: file, inProgress: false, progress: 0});
-//               }
-//                 this.uploadFile();
-//               };
-//               fileUpload.click();
-//           }
-// }
+    this.currentFile = this.selectedFiles.item(0);
+    this.uploadService.upload(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          // this.fileInfos = this.uploadService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined;
+      });
+    this.selectedFiles = undefined;
+  }
+
+
 }

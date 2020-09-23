@@ -46,7 +46,9 @@ const routes: Routes = [
   {
   path : "upload",
   component : PictureComponent
-}
+  }
+// },
+// { path: 'login',   redirectTo: "home", pathMatch: 'full' }
 ];
 
 @NgModule({

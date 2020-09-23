@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.login.login(u).subscribe((data) => {
       console.log(data);
     
+    
       /* 
       So if, the post method is successful,
       loginFunc() will do these things:

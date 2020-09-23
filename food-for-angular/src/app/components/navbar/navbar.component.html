@@ -1,24 +1,25 @@
-<div [hidden]="visibility">
+
+<ng-container *ngIf="visibility==true">
     <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
+                <a class="nav-link" (click)="goToHome()">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="updateInfo">update user</a>
+                <a class="nav-link" (click)="goToUpdateUser()">update user</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="search">search stuff</a>
+                <a class="nav-link" (click)="goToSearch()">search stuff</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="logout">Log out</a>
+                <a class="nav-link" (click)="goToLogOut()">Log out</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="cookbook">Look at Cookbook</a>
+                <a class="nav-link" (click)="goToCookbook()">Look at Cookbook</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="upload">Upload a Picture</a>
+                <a class="nav-link" (click)="goToUploadPicture()">Upload a Picture</a>
             </li>
         </ul>
     </nav>
-</div>
+</ng-container>

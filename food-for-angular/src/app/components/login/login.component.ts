@@ -4,6 +4,8 @@ import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { User } from 'src/app/models/user';
 import {Md5} from 'ts-md5/dist/md5';
 import { Preference } from 'src/app/models/preference';
+import { NavbarService } from 'src/app/services/navbar.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,13 +14,13 @@ import { Preference } from 'src/app/models/preference';
 export class LoginComponent implements OnInit {
   public username : string;
   public password : string;
-  public visibility : boolean;
-  constructor(private login : LoginService) {
+  
+  constructor(private login : LoginService, private navbar : NavbarService, private route : Router) {
 
    }
-
+  
   ngOnInit(): void {
-    this.visibility = true;
+
   }
 
   loginFunc(){
@@ -52,11 +54,13 @@ export class LoginComponent implements OnInit {
       this.login.serviceUser = data;
       this.login.loggedIn = true;
       console.log("login service user " + this.login.serviceUser);
-      this.visibility = false;
+    
+      this.route.navigate(['home']);
       
     }, () => {
       console.log("No you goofed");
     })
   }
 
+  
 }

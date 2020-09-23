@@ -27,8 +27,8 @@ export class RecipeFormService {
 
 console.log("messing with Object.keys !!!!!!1")
 console.log(Object.keys(recipe));
-console.log(Object.keys(recipe.recipeStep))
-console.log(Object.values(recipe.recipeStep))
+console.log(Object.keys(recipe.recipeSteps))
+console.log(Object.values(recipe.recipeSteps))
 
     console.log("recipe about to be saved to the database");
     console.log(recipe);

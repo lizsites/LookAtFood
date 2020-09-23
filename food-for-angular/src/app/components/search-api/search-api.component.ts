@@ -84,7 +84,7 @@ export class SearchApiComponent implements OnInit {
 
       for (let i = 0; i < data.analyzedInstructions[0].steps.length; i++){
         let step : Step = new Step();
-        recipe.recipeStep[i] = step;     
+        recipe.recipeSteps[i] = step;     
         step.stepNum = data.analyzedInstructions[0].steps[i].number;
         step.body = data.analyzedInstructions[0].steps[i].step;
         step.recipe = recipe;

@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
 
+<app-navbar></app-navbar>
 
 <form [formGroup]="RecipeForm" (ngSubmit)="onSubmit()">
     
@@ -28,6 +28,7 @@
         <label>
             <input type="text" [formControlName]="i">
         </label>
+        <button type="button" (click)="removeIngredent">Remove Ingredient</button>
     </div>
 </div>
 <div formArrayName="steps">

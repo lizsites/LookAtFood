@@ -18,10 +18,10 @@ export class HomeService {
     if (u.preference.dietType !== null){
       req = req.concat("&diet=" + u.preference.dietType);
     }
-    if (u.preference.minCalories !== null){
+    if (u.preference.minCalories > 0){
       req = req.concat("&minCalories="+u.preference.minCalories);
     }
-    if (u.preference.maxCalories !== null){
+    if (u.preference.maxCalories > 0){
       req = req.concat("&maxCalories="+u.preference.maxCalories);
     }
 

@@ -23,7 +23,7 @@ export class PictureComponent implements OnInit {
 
   constructor(private uploadService: UploadService) { }
   ngOnInit(): void {
-    // this.fileInfos = this.uploadService.getFiles();
+     //this.fileInfos = this.uploadService.getFiles();
   }
 
   selectFile(event): void {

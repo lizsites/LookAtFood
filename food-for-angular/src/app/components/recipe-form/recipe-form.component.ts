@@ -50,6 +50,10 @@ export class RecipeFormComponent implements OnInit {
     this.ingredients.push(this.fb.control(''));
   }
 
+  removeIngredient(){
+    
+  }
+
   addPrefilledIngredient(name : string){
     this.ingredients.push(this.fb.control(name))
   }
@@ -65,10 +69,10 @@ export class RecipeFormComponent implements OnInit {
     this.RecipeForm.get('title').setValue(recipe.title);
     this.RecipeForm.get('summary').setValue(recipe.summary);
     console.log("Testing Recipe Step")
-    console.log(recipe.recipeStep)
+    console.log(recipe.recipeSteps)
     console.log(recipe.ingredients)
-    for (let i = 0; i < recipe.recipeStep.length;i++){
-     this.addPrefilledStep(recipe.recipeStep[i].body);
+    for (let i = 0; i < recipe.recipeSteps.length;i++){
+     this.addPrefilledStep(recipe.recipeSteps[i].body);
    
     }
     for (let i = 0; i < recipe.ingredients.length; i++){
@@ -88,12 +92,12 @@ export class RecipeFormComponent implements OnInit {
     //recipe.owner = this.login.serviceUser;
     recipe.title = this.RecipeForm.get('title').value;
     recipe.summary = this.RecipeForm.get('summary').value;
-    recipe.recipeStep = [];
+    recipe.recipeSteps = [];
     recipe.ingredients = [];
     this.stepCount = 0;
     for (let formStep of this.RecipeForm.get('steps').value){
       let step : Step = new Step();
-      recipe.recipeStep.push(step);
+      recipe.recipeSteps.push(step);
       step.stepNum = ++this.stepCount;
       step.body = formStep;
       //step.recipe = recipe;

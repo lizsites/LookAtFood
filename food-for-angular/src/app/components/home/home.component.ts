@@ -27,13 +27,13 @@ export class HomeComponent implements OnInit {
       
       console.log("arrRecipe" +arrRecipe);
       console.log("arrRecipe title!!!! " +arrRecipe[0].title);
-      console.log("arrRecipe calories" + arrRecipe[0].nutrition.nutrients[0].amount);
+      //console.log("arrRecipe calories" + arrRecipe[0].nutrition.nutrients[0].amount);
       
       for (let i = 0; i < arrRecipe.length; i++){
         this.recipes[i] = new Recipe();
         this.recipes[i].title = arrRecipe[i].title;
-        this.recipes[i].calories = arrRecipe[i].nutrition.nutrients[0].amount;
-        console.log("recipe info " + this.recipes[i].title + " " + this.recipes[i].calories);
+        //this.recipes[i].calories = arrRecipe[i].nutrition.nutrients[0].amount;
+        //console.log("recipe info " + this.recipes[i].title + " " + this.recipes[i].calories);
 
       }
     }) , ()=>{

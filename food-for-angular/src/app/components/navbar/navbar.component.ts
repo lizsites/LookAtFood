@@ -16,16 +16,13 @@ export class NavbarComponent implements OnInit {
   }
 
   goToHome(){
-    this.route.navigate(['home'])
+    this.route.navigate(['search'])
   }
   goToCookbook(){
     this.route.navigate(['cookbook'])
   }
   goToLogOut(){
     this.route.navigate(['logout'])
-  }
-  goToSearch(){
-    this.route.navigate(['search'])
   }
   goToUpdateUser(){
     this.route.navigate(['updateInfo'])

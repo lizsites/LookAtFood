@@ -1,8 +1,18 @@
 <app-navbar></app-navbar>
 <input type="text" placeholder="SEARCH NAME" [(ngModel)]="query"/>
 <select [(ngModel)]="cuisine">
-    <option value="italian">italian</option>
-    <option value=null>null</option>
+    <option value=null>none selected</option>
+    <option value="African">African</option>
+    <option value="American">American</option>
+    <option value="British">British</option>
+    <option value="Chinese">Chinese</option>
+    <option value="French">French</option>
+    <option value="Greek">Greek</option>
+    <option value="Indian">Indian</option>
+    <option value="Italian">Italian</option>
+    <option value="Japanese">Japanese</option>
+    <option value="Mexican">Mexican</option>
+    <option value="Thai">Thai</option>
 </select>
 <input type="number" placeholder="minimum calories" [(ngModel)]="minCalories"/>
 <input type="number" placeholder="maximum calories" [(ngModel)]="maxCalories"/>

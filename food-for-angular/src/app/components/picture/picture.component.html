@@ -1,4 +1,11 @@
 <app-navbar></app-navbar>
+
+<ng-template [ngIf]="imageTypeShow">
+  <ng-template [ngIf]="imageToShow.photo">
+      <img [src]="imageToShow.photo" class="img-thumbnail" *ngIf="!isImageLoading;">
+  </ng-template>
+</ng-template>
+
     <h2>Upload a picture of your creation!:</h2>
     <div *ngIf="currentFile" class="progress">
         <div
@@ -36,13 +43,5 @@
       </div>
     
     
+     
     
-    
-    
-    <!-- <input type="file" name="photo" id="pic" placeholder="Upload picture" ng2FileSelect [uploader]="uploader"/>
-    <button type="button" class="btn btn-success btn-s" 
-  (click)="uploader.uploadAll()" 
-  [disabled]="!uploader.getNotUploadedItems().length" >
-      Upload an Image
-</button>
-</section> -->

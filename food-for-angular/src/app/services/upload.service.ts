@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpRequest, HttpEvent, HttpErrorResponse, HttpEventType, HttpHeaders} from '@angular/common/http';
 import { Observable } from  'rxjs';
+
+import { User } from '../models/user';
 import { PictureDTO } from '../models/picture-dto';
 import { formattedError } from '@angular/compiler';
 import { formatDate } from '@angular/common';
+
 
 // used for seeing upload process?
 
@@ -36,7 +39,20 @@ public upload(pictureDTO : PictureDTO): Observable<HttpEvent<any>> {
     return this.http.request(req);
       
     }
+
+    
     getFiles(): Observable<any> {
       return this.http.get(`${this.baseUrl}/files`);
+    }
+
+    getCustomerImages(user : User): Observable<File> {
+      let jsonUser : string = JSON.stringify(user);
+      return this.http.post(`${this.baseUrl}/download`, jsonUser, {
+        headers : {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        responseType: "blob" 
+        }) as Observable<any>;
     }
   }

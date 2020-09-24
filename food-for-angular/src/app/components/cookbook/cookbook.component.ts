@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class CookbookComponent implements OnInit {
   recipes : Recipe[] = [] as Recipe[];
-  constructor(private login : LoginService, private rf : RecipeFormService, private search : SearchService, private route : Router) { }
+  constructor(private login : LoginService, private rf : RecipeFormService, private route : Router) { }
 
   ngOnInit(): void {
     if (this.login.serviceUser!==null && this.login.loggedIn){
@@ -26,36 +26,10 @@ export class CookbookComponent implements OnInit {
     this.recipes = this.login.serviceUser.recipes;
     this.route.navigate(['cookbook']);
   }
-  saveRecipe(recipe : Recipe){
-    this.search.getMoreInfo(recipe.id).subscribe((data)=>{
+  editRecipe(recipe : Recipe){
 
-      console.log("data being retrieved :" + data);
-
-      for (let i = 0; i < data.analyzedInstructions[0].steps.length; i++){
-        let step : Step = new Step();
-        recipe.recipeSteps[i] = step;     
-        step.stepNum = data.analyzedInstructions[0].steps[i].number;
-        step.body = data.analyzedInstructions[0].steps[i].step;
-        step.recipe = recipe;
-        
-      }
-      for (let i = 0; i < data.extendedIngredients.length; i++){
-        let ingredient = new Ingredient();
-        recipe.ingredients.push(ingredient);
-        ingredient.name = data.extendedIngredients[i].original;
-        ingredient.recipe = recipe;
-       
-      }
-      //This knocks off lengthier summaries
-      let firstSentenace = data.summary.split('.');
-      recipe.summary = firstSentenace[0] + ".";
-      console.log(data);
-      this.rf.setRecipeForm(recipe);
-    }, ()=>{
-
-    });
-
-    
+    this.rf.setRecipeForm(recipe);
+    this.route.navigate(['recipe']);
   }
 
 }

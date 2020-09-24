@@ -5,7 +5,6 @@
 
         </p>
     </div>
-    <input type="button" (click)="viewUser()" value="view user"/>
     <div id="edit-form" >
     <div>
     <h6>Input info to update your account</h6>
@@ -13,16 +12,23 @@
         <input type="password" placeholder="PASSWORD" [(ngModel)]="password"/>
     </div>
         <p>Change diet:</p>
-    <select  [(ngModel)]="diet">
-        <option value=null>No Diet</option>
-        <option value="GLUTEN_FREE">Gluten Free</option>
-        <option value="PALEO">Paleo</option>
-        <option value="KETOGENIC">keto</option>
-    </select>
+        <select  [(ngModel)]="diet">
+            <option value=null>No Diet</option>
+            <option value="GLUTEN_FREE">Gluten-Free</option>
+            <option value="KETOGENIC">Keto</option>       
+            <option value="LACTO_VEGETARIAN">Lacto-Vegetarian</option>      
+            <option value="OVO_VEGETARIAN">Ovo-Vegetarian</option>
+            <option value="PALEO">Paleo</option>
+            <option value="PESCETARIAN">Pescetarian</option>
+            <option value="PRIMAL">Primal</option>
+            <option value="VEGAN">Vegan</option>
+            <option value="VEGETARIAN">Vegetarian</option>
+            <option value="WHOLE30">Whole-30</option>
+        </select>
     <p>Change minimum calories:</p>
-    <input type="number"  [(ngModel)]="minCalories" placeholder="min. calories"/>
-    <p>Change maximum calories:</p>
-    <input type="number"  [(ngModel)]="maxCalories" value="max. calories"/>
+    <input type="number"  [(ngModel)]="minCalories" placeholder="min. calories" min="0" oninput="validity.valid||(value='');"/>
+    <p>Change maximum calories:</p>     <!--The onInput attribute prevents typing a negative value-->
+    <input type="number"  [(ngModel)]="maxCalories" value="max. calories" min="0" oninput="validity.valid||(value='');"/>
 
     <p>
         <input type="button" (click)="updateUser()" value="Update"/>

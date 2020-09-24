@@ -3,7 +3,7 @@
 <div *ngFor="let recipe of recipes">
     <span>{{recipe.id}}</span>
     <p>{{recipe.title}}</p>
-    <p>{{recipe.description}}</p>
+    <p>{{recipe.summary}}</p>
 
     <div *ngFor="let ingredient of recipe.ingredients">
         <p>{{ingredient.name}}</p>
@@ -12,8 +12,5 @@
     <div *ngFor="let step of recipe.recipeSteps">
         <p>{{step.stepNum}} : {{step.body}}</p>
     </div>
-    
-    <p><button (click)="getInfo(recipe.id)">See more info...</button></p>
-    
-<button (click)="saveRecipe(recipe)">Edit Recipe</button>
+<button (click)="editRecipe(recipe)">Edit Recipe</button>
 </div>

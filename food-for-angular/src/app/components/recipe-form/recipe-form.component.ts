@@ -50,8 +50,12 @@ export class RecipeFormComponent implements OnInit {
     this.ingredients.push(this.fb.control(''));
   }
 
-  removeIngredient(){
-    
+  removeIngredient(i : number){
+    this.ingredients.removeAt(i);
+  }
+
+  removeStep(i : number){
+    this.steps.removeAt(i);
   }
 
   addPrefilledIngredient(name : string){

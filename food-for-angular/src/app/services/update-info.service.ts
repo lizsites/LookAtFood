@@ -11,9 +11,6 @@ export class UpdateInfoService {
 
   updateUserInfo(user : User): Observable<User> {
     console.log("::::::::IN LOGIN SERVICE:::::::::::");
-    //Test user to avoid typing over and over again
-    // user.username = "betty1";
-    // user.password = "destroyah";
     let jsonUser : string = JSON.stringify(user);
     console.log(jsonUser);
     return this.http.put("http://ec2-18-218-228-24.us-east-2.compute.amazonaws.com:8090/food/updateInfo/", jsonUser, {

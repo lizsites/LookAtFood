@@ -30,6 +30,7 @@ export class PictureComponent implements OnInit {
   constructor(private uploadService: UploadService, private login : LoginService) { }
   ngOnInit(): void {
      //this.fileInfos = this.uploadService.getFiles();
+    //  this.getCustomerImages();
   }
 
   url;
@@ -45,6 +46,10 @@ export class PictureComponent implements OnInit {
 			this.url = reader.result; 
 		}
 	}
+
+  dowload() {
+    
+  }
 
   upload() {
     this.progress = 0;

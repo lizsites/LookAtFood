@@ -5,7 +5,6 @@
 
         </p>
     </div>
-    <input type="button" (click)="viewUser()" value="view user"/>
     <div id="edit-form" >
     <div>
     <h6>Input info to update your account</h6>
@@ -27,9 +26,9 @@
             <option value="WHOLE30">Whole-30</option>
         </select>
     <p>Change minimum calories:</p>
-    <input type="number"  [(ngModel)]="minCalories" placeholder="min. calories"/>
-    <p>Change maximum calories:</p>
-    <input type="number"  [(ngModel)]="maxCalories" value="max. calories"/>
+    <input type="number"  [(ngModel)]="minCalories" placeholder="min. calories" min="0" oninput="validity.valid||(value='');"/>
+    <p>Change maximum calories:</p>     <!--The onInput attribute prevents typing a negative value-->
+    <input type="number"  [(ngModel)]="maxCalories" value="max. calories" min="0" oninput="validity.valid||(value='');"/>
 
     <p>
         <input type="button" (click)="updateUser()" value="Update"/>

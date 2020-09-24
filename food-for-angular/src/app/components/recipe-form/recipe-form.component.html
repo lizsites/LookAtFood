@@ -18,7 +18,7 @@
 <div>
     <label>
         Calories:
-        <input type="number" formControlName="calories">
+        <input type="number" formControlName="calories" min="0" oninput="validity.valid||(value='');">
     </label>
 </div>
 <div formArrayName="ingredients">
@@ -28,7 +28,7 @@
         <label>
             <input type="text" [formControlName]="i">
         </label>
-        <button type="button" (click)="removeIngredent">Remove Ingredient</button>
+        <button type="button" (click)="removeIngredient(i)">Remove Ingredient</button>
     </div>
 </div>
 <div formArrayName="steps">
@@ -38,6 +38,7 @@
         <label>
             <input type="text" [formControlName]="i">
         </label>
+        <button type="button" (click)="removeStep(i)">Remove Step</button>
     </div>
 </div>
 <div id="submit">

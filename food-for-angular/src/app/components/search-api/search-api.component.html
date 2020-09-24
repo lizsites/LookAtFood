@@ -19,13 +19,11 @@
 <button (click)="searchApi()">Search</button>
 
 <div id="page-body">
-    <div [hidden]="lookingAtRecipe">
     <div *ngFor="let recipe of recipes">
             <span>{{recipe.id}}</span>
             <p>{{recipe.title}}</p>
             <p><button (click)="getInfo(recipe.id)">See more info...</button></p>
             <p></p>
         <button (click)="saveRecipe(recipe)">Save Recipe</button>
-    </div>
 </div>
 </div>

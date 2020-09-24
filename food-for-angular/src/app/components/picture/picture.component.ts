@@ -32,6 +32,10 @@ export class PictureComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
+  dowload() {
+    
+  }
+
   upload() {
     this.progress = 0;
   

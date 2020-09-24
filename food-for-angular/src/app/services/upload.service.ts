@@ -18,10 +18,10 @@ public upload(file: File): Observable<HttpEvent<any>> {
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('PUT', `${this.baseUrl}/upload`, formData, {
       reportProgress: true,
       responseType: 'json',
-      withCredentials: true,
+      //withCredentials: true,
       headers : new HttpHeaders({
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Allow-Origin': '*',

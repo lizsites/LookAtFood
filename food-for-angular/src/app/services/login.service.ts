@@ -35,13 +35,13 @@ export class LoginService {
     // user.username = "betty1";
     // user.password = "destroyah";
     let jsonUser : string = JSON.stringify(user);
-    return this.http.post("http://localhost:8090/food/login", jsonUser, {
-      withCredentials : true,
-      headers : {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Origin': '*',
+    return this.http.post("http://ec2-18-218-228-24.us-east-2.compute.amazonaws.com:8090/food/login", jsonUser, {
+      //withCredentials : true,
+       headers : {
+       'Content-Type': 'application/json',
+       'Accept': 'application/json',
+      // //'Access-Control-Allow-Headers': 'Content-Type',
+      // //'Access-Control-Allow-Origin': '*',
       },
       responseType : "json"
     }) as Observable<User>;

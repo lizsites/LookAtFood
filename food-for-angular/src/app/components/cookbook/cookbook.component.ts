@@ -22,4 +22,5 @@ export class CookbookComponent implements OnInit {
       console.log("Initiated cookbook recipes :" + this.recipes)
     }
   }
+
 }

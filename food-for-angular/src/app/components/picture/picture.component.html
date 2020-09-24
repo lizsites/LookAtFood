@@ -24,7 +24,7 @@
       <div class="alert alert-light" role="alert">{{ message }}</div>
       
       <div class="card">
-        <div class="card-header">List of Files</div>
+        <div class="card-header">List of Pics</div>
         <ul
           class="list-group list-group-flush"
           *ngFor="let file of fileInfos | async"
@@ -36,7 +36,10 @@
       </div>
     
     
-    
+      <div style="text-align:center">
+        <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+        <div><img [src]="url" *ngIf="url"></div>
+      </div>
     
     
     <!-- <input type="file" name="photo" id="pic" placeholder="Upload picture" ng2FileSelect [uploader]="uploader"/>

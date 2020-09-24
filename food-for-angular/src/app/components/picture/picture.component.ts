@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from  '@angular/forms';
 import { User } from 'src/app/models/user';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-picture',
@@ -21,14 +22,14 @@ export class PictureComponent implements OnInit {
 
   fileInfos: Observable<any>;
 
-  constructor(private uploadService: UploadService) { }
+  constructor(private uploadService: UploadService, private loginService: LoginService) { };
   ngOnInit(): void {
      //this.fileInfos = this.uploadService.getFiles();
   }
 
-  selectFile(event): void {
-    this.selectedFiles = event.target.files;
-  }
+  // selectFile(event): void {
+  //   this.selectedFiles = event.target.files;
+  // }
 
   upload(): void {
     this.progress = 0;
@@ -50,6 +51,18 @@ export class PictureComponent implements OnInit {
       });
     this.selectedFiles = undefined;
   }
-
+  url;
+	msg = "";
+	
+	selectFile(event) {
+    this.selectedFiles = event.target.files;
+		var reader = new FileReader();
+		reader.readAsDataURL(event.target.files[0]);
+		
+		reader.onload = (_event) => {
+			this.msg = "";
+			this.url = reader.result; 
+		}
+	}
 
 }

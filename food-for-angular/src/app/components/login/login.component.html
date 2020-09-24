@@ -3,10 +3,13 @@
 <h2>Please Enter Your Username and Password:</h2>
 <input type="text" id="username" placeholder="USERNAME" [(ngModel)]="username"/>
 <input type="password" id="password" placeholder="PASSWORD" [(ngModel)]="password"/>
-<button id = "loginbtn" (click)="loginFunc()">Login</button>
+<button id = "loginbtn" (click)="loginFunc()">Log in</button>
 </section>
-<h3> Or, Create a new account!</h3>
-<button class="nav-link" routerLinkActive="active" routerLink="register">Create an Account</button>
+<section class="registerSection">
+    <h3> or Create a New Account</h3>
+    <button class="nav-link" routerLinkActive="active" routerLink="register">Create Account</button>
+</section>
+
 
     <!-- <app-update-user [username]="username"></app-update-user> -->
 

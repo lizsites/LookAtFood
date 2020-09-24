@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpRequest, HttpEvent, HttpErrorResponse, HttpEventType, HttpHeaders} from '@angular/common/http';
 import { Observable } from  'rxjs';
+
 import { User } from '../models/user';
+import { PictureDTO } from '../models/picture-dto';
+import { formattedError } from '@angular/compiler';
+import { formatDate } from '@angular/common';
+
 
 // used for seeing upload process?
 
@@ -14,18 +19,19 @@ export class UploadService {
   constructor(private http : HttpClient) { }
 
   
-public upload(file: File): Observable<HttpEvent<any>> {
+public upload(pictureDTO : PictureDTO): Observable<HttpEvent<any>> {
   const formData: FormData = new FormData();
 
-    formData.append('file', file);
+    formData.append('file', pictureDTO.picture);
+    formData.append('username', pictureDTO.username);
 
-    const req = new HttpRequest('PUT', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
       reportProgress: true,
       responseType: 'json',
       //withCredentials: true,
       headers : new HttpHeaders({
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Origin': '*',
+        //'Access-Control-Allow-Origin': '*',
         },
         ),
     });

@@ -36,5 +36,8 @@ export class NavbarComponent implements OnInit {
   goToRecipeForm(){
     this.route.navigate(['recipe'])
   }
+  goToNewRecipe(){
+    this.route.navigate(['recipe'])
+  }
 
 }

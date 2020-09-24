@@ -51,6 +51,7 @@ export class UpdateUserComponent implements OnInit {
     this.update.updateUserInfo(u).subscribe((data)=>{
       console.log("data returned " + data);
       u = data;
+      console.log("update user " + u)
       window.sessionStorage.setItem("user", u.username)}, () =>{
         console.log("error in the update user info");
       }

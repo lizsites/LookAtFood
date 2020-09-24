@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { Preference } from 'src/app/models/preference';
 import { MinLengthValidator } from '@angular/forms';
 import { Md5 } from 'ts-md5';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { Md5 } from 'ts-md5';
 export class AddUserComponent implements OnInit {
   public username : string;
   public password : string;
-  constructor(private register : RegisterService) {
+  constructor(private register : RegisterService, private route : Router) {
 
    }
 
@@ -32,6 +33,7 @@ export class AddUserComponent implements OnInit {
     console.log(u);
     this.register.register(u).subscribe((data) => {
       console.log(data);
+      this.route.navigate(['/'])
       u = data;
     }, () => {
       console.log("No you goofed");

@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
       this.login.loggedIn = true;
       console.log("login service user " + this.login.serviceUser);
     
-      this.route.navigate(['home']);
+      this.route.navigate(['search']);
       
     }, () => {
       console.log("No you goofed");

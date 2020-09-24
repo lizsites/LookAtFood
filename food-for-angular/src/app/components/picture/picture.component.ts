@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from  '@angular/forms';
 import { User } from 'src/app/models/user';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { PictureDTO } from 'src/app/models/picture-dto';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-picture',
@@ -21,7 +23,7 @@ export class PictureComponent implements OnInit {
 
   fileInfos: Observable<any>;
 
-  constructor(private uploadService: UploadService) { }
+  constructor(private uploadService: UploadService, private login : LoginService) { }
   ngOnInit(): void {
      //this.fileInfos = this.uploadService.getFiles();
   }
@@ -30,17 +32,21 @@ export class PictureComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  upload(): void {
+  upload() {
     this.progress = 0;
   
     this.currentFile = this.selectedFiles.item(0);
-    this.uploadService.upload(this.currentFile).subscribe(
+    let pictureDTO = new PictureDTO();
+    pictureDTO.picture = this.selectedFiles.item(0);
+    pictureDTO.username = this.login.serviceUser.username;
+    this.uploadService.upload(pictureDTO).subscribe(
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
           // this.fileInfos = this.uploadService.getFiles();
+        
         }
       },
       err => {

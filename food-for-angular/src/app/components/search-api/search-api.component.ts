@@ -5,6 +5,10 @@ import { Preference } from 'src/app/models/preference';
 import { RecipeFormService } from 'src/app/services/recipe-form.service';
 import { Step } from 'src/app/models/step';
 import { Ingredient } from 'src/app/models/ingredient';
+import { LoginService } from 'src/app/services/login.service';
+import { HomeComponent } from '../home/home.component';
+import { HomeService } from 'src/app/services/home.service';
+import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-search-api',
   templateUrl: './search-api.component.html',
@@ -18,10 +22,32 @@ export class SearchApiComponent implements OnInit {
  query : string;
  recipeId : number;
  lookingAtRecipe : boolean;
+ u : User;
   recipes : Recipe[] = [];
-  constructor(private search : SearchService, private rf : RecipeFormService) { }
+  constructor(private search : SearchService, private rf : RecipeFormService, private login : LoginService, private home : HomeService) { }
 
   ngOnInit(): void {
+    this.u = this.login.serviceUser;
+    this.home.home(this.u).subscribe((data)=>{
+      console.log(data);
+      
+      let arrRecipe : any[] = data.results;
+      
+      console.log("arrRecipe" +arrRecipe);
+      console.log("arrRecipe title!!!! " +arrRecipe[0].title);
+      //console.log("arrRecipe calories" + arrRecipe[0].nutrition.nutrients[0].amount);
+      
+      for (let i = 0; i < arrRecipe.length; i++){
+        this.recipes[i] = new Recipe();
+        this.recipes[i].id = arrRecipe[i].id;
+        this.recipes[i].title = arrRecipe[i].title;
+        //this.recipes[i].calories = arrRecipe[i].nutrition.nutrients[0].amount;
+        //console.log("recipe info " + this.recipes[i].title + " " + this.recipes[i].calories);
+
+      }
+    }) , ()=>{
+      console.log("error!");
+    } 
   }
 
   getInfo(id : number){

@@ -111,9 +111,11 @@ export class RecipeFormComponent implements OnInit {
       console.log("Ingredient being set: " + ingredient.name)
     }
     this.rf.sendRecipe(recipe).subscribe((data)=>{
-      console.log(data);
-      let recipe = data;
-      
+      console.log("first recipe of data" + data.recipes[0].title);
+      this.login.serviceUser.recipes = data.recipes;
+      for (let recipe of this.login.serviceUser.recipes){
+      console.log("Recipes in user" + recipe);
+      }
     },()=>{
       console.log("something went wrong");
     });

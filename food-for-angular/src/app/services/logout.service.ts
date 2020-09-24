@@ -12,7 +12,7 @@ export class LogoutService {
   
   public logoutFunc() : Observable<any>
   {
-   return this.http.get("http://localhost:8090/food/logout",{
+   return this.http.get("http://ec2-18-218-228-24.us-east-2.compute.amazonaws.com:8090/food/logout",{
     headers : {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

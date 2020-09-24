@@ -1,4 +1,5 @@
-
+<app-navbar></app-navbar>
+<button type="button" (click)="refresh()">refresh list</button>
 <div *ngFor="let recipe of recipes">
     <span>{{recipe.id}}</span>
     <p>{{recipe.title}}</p>
@@ -8,7 +9,7 @@
         <p>{{ingredient.name}}</p>
     </div>
 
-    <div *ngFor="let step of recipe.steps">
+    <div *ngFor="let step of recipe.recipeSteps">
         <p>{{step.stepNum}} : {{step.body}}</p>
     </div>
     

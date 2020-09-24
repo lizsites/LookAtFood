@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<ng-template [ngIf]="imageTypeShow">
+<ng-template [ngIf]="imageToShow">
   <ng-template [ngIf]="imageToShow.photo">
       <img [src]="imageToShow.photo" class="img-thumbnail" *ngIf="!isImageLoading;">
   </ng-template>

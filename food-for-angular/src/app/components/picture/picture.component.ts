@@ -78,7 +78,9 @@ export class PictureComponent implements OnInit {
 
   getCustomerImages() {
     this.isImageLoading = true;
-    this.getCustomerImagesSubscription = this.getCustomerService.getCustomerImages(this.refNo).subscribe(
+    let pictureDTO = new PictureDTO();
+    pictureDTO.username = this.login.serviceUser.username;
+    this.getCustomerImagesSubscription = this.uploadService.getCustomerImages(pictureDTO).subscribe(
       data => {
         this.createImageFromBlob(data);
         this.isImageLoading = false;
@@ -86,9 +88,6 @@ export class PictureComponent implements OnInit {
       error => {
         this.isImageLoading = false;
       });
-  }
-  refNo(refNo: any) {
-    throw new Error("Method not implemented.");
   }
 
   createImageFromBlob(image: Blob) {

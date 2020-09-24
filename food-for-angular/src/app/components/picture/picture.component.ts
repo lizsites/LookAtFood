@@ -6,6 +6,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PictureDTO } from 'src/app/models/picture-dto';
 import { LoginService } from 'src/app/services/login.service';
+import { ImageToShow } from 'src/app/models/image-to-show';
 
 @Component({
   selector: 'app-picture',
@@ -25,7 +26,7 @@ export class PictureComponent implements OnInit {
   isImageLoading: boolean;
   getCustomerImagesSubscription: any;
   getCustomerService: any;
-  imageToShow: any;
+  imageToShow: string | ArrayBuffer;
 
   constructor(private uploadService: UploadService, private login : LoginService) { }
   ngOnInit(): void {
@@ -82,27 +83,42 @@ export class PictureComponent implements OnInit {
     pictureDTO.username = this.login.serviceUser.username;
     this.getCustomerImagesSubscription = this.uploadService.getCustomerImages(pictureDTO).subscribe(
       data => {
-        this.createImageFromBlob(data);
-        this.isImageLoading = false;
+        // this.createImageFromBlob(data);
+        // this.isImageLoading = false;
+        console.log(typeof data);
+        console.log(Object.keys(data));
+        console.log(Object.values(data));
+        //get string out of object 
+
+        // let image = new Image();
+        // image.src=data;
+        // let w= window.open("");
+        // w.document.write(image.outerHTML);
       },
       error => {
         this.isImageLoading = false;
       });
   }
 
-  createImageFromBlob(image: Blob) {
-    let reader = new FileReader();
-    reader.addEventListener("load",
-      () => {
-          this.imageToShow.photo = reader.result;
-      },
-      false);
+  // createImageFromBlob(image: string) {
+  //   let reader = new FileReader();
+ 
+  //   reader.addEventListener("load",
+  //     () => {
+  //       // reader.onload = (e) => this.imageToShow = e.target.result;
+  //       // reader.readAsDataURL(this.imageToShow);
+  //       window.open(image);
+  //     }
+  //   //     console.log(typeof reader.result);
+  //   //     console.log("this is the reader" +reader.result);
+  //   //       this.imageToShow.photo = reader.result;
+  //   //   },
+  //   //   false);
 
-    if (image) {
-      if (image.type !== "application/pdf")
-        reader.readAsDataURL(image);
-    }
-  }
-
+  //   // if (image) {
+  //   //   if (image.type !== "application/pdf")
+  //   //     reader.readAsDataURL(image);
+  //   // }
+  
 
 }

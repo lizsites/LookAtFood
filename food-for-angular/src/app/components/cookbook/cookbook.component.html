@@ -3,7 +3,7 @@
 <div *ngFor="let recipe of recipes">
     <span>{{recipe.id}}</span>
     <p>{{recipe.title}}</p>
-    <p>{{recipe.description}}</p>
+    <p>{{recipe.summary}}</p>
 
     <div *ngFor="let ingredient of recipe.ingredients">
         <p>{{ingredient.name}}</p>

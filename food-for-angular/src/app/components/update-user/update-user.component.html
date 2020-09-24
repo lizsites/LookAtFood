@@ -13,12 +13,19 @@
         <input type="password" placeholder="PASSWORD" [(ngModel)]="password"/>
     </div>
         <p>Change diet:</p>
-    <select  [(ngModel)]="diet">
-        <option value=null>No Diet</option>
-        <option value="GLUTEN_FREE">Gluten Free</option>
-        <option value="PALEO">Paleo</option>
-        <option value="KETOGENIC">keto</option>
-    </select>
+        <select  [(ngModel)]="diet">
+            <option value=null>No Diet</option>
+            <option value="GLUTEN_FREE">Gluten-Free</option>
+            <option value="KETOGENIC">Keto</option>       
+            <option value="LACTO_VEGETARIAN">Lacto-Vegetarian</option>      
+            <option value="OVO_VEGETARIAN">Ovo-Vegetarian</option>
+            <option value="PALEO">Paleo</option>
+            <option value="PESCETARIAN">Pescetarian</option>
+            <option value="PRIMAL">Primal</option>
+            <option value="VEGAN">Vegan</option>
+            <option value="VEGETARIAN">Vegetarian</option>
+            <option value="WHOLE30">Whole-30</option>
+        </select>
     <p>Change minimum calories:</p>
     <input type="number"  [(ngModel)]="minCalories" placeholder="min. calories"/>
     <p>Change maximum calories:</p>

@@ -20,15 +20,29 @@ export class PictureComponent implements OnInit {
   //change this to get userId
 
   fileInfos: Observable<any>;
+  isImageLoading: boolean;
+  getCustomerImagesSubscription: any;
+  getCustomerService: any;
+  imageToShow: any;
 
   constructor(private uploadService: UploadService) { }
   ngOnInit(): void {
      //this.fileInfos = this.uploadService.getFiles();
   }
 
-  selectFile(event): void {
+  url;
+	msg = "";
+	
+	selectFile(event) {
     this.selectedFiles = event.target.files;
-  }
+		var reader = new FileReader();
+		reader.readAsDataURL(event.target.files[0]);
+		
+		reader.onload = (_event) => {
+			this.msg = "";
+			this.url = reader.result; 
+		}
+	}
 
   upload(): void {
     this.progress = 0;
@@ -49,6 +63,35 @@ export class PictureComponent implements OnInit {
         this.currentFile = undefined;
       });
     this.selectedFiles = undefined;
+  }
+
+  getCustomerImages() {
+    this.isImageLoading = true;
+    this.getCustomerImagesSubscription = this.getCustomerService.getCustomerImages(this.refNo).subscribe(
+      data => {
+        this.createImageFromBlob(data);
+        this.isImageLoading = false;
+      },
+      error => {
+        this.isImageLoading = false;
+      });
+  }
+  refNo(refNo: any) {
+    throw new Error("Method not implemented.");
+  }
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load",
+      () => {
+          this.imageToShow.photo = reader.result;
+      },
+      false);
+
+    if (image) {
+      if (image.type !== "application/pdf")
+        reader.readAsDataURL(image);
+    }
   }
 
 

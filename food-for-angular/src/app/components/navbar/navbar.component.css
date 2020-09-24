@@ -1,0 +1,14 @@
+nav{
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 12pt;
+    font-weight: 500;
+}
+.nav-item{
+    margin: 5px;
+    background-color: rgb(122, 107, 79);
+    border: outset;
+}
+.nav-link{
+    color: white;
+}

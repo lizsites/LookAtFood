@@ -1,0 +1,15 @@
+h3{
+    text-align: center;
+}
+.nav-link{
+    margin-left: 30rem;
+    margin-right:30rem;
+}
+.registerSection{
+    padding: 0px;
+    background-color: white;
+}
+.registerSection h3{
+    padding: 0px;
+    font-weight: normal;
+}

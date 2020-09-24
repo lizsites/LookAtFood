@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-
+<button type="button" class="button btn-success" (click)="(getCustomerImages)">Get Images</button>
 <ng-template [ngIf]="imageToShow">
   <ng-template [ngIf]="imageToShow.photo">
       <img [src]="imageToShow.photo" class="img-thumbnail" *ngIf="!isImageLoading;">

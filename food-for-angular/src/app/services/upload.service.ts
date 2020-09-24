@@ -45,9 +45,9 @@ public upload(pictureDTO : PictureDTO): Observable<HttpEvent<any>> {
       return this.http.get(`${this.baseUrl}/files`);
     }
 
-    getCustomerImages(user : User): Observable<File> {
-      let jsonUser : string = JSON.stringify(user);
-      return this.http.post(`${this.baseUrl}/download`, jsonUser, {
+    getCustomerImages(pictureDTO : PictureDTO): Observable<File> {
+     let username = pictureDTO.username;
+      return this.http.post(`${this.baseUrl}/download`, username, {
         headers : {
           'Content-Type': 'application/json',
           'Accept': 'application/json',

@@ -1,10 +1,6 @@
 <app-navbar></app-navbar>
 
-<ng-template [ngIf]="imageTypeShow">
-  <ng-template [ngIf]="imageToShow.photo">
-      <img [src]="imageToShow.photo" class="img-thumbnail" *ngIf="!isImageLoading;">
-  </ng-template>
-</ng-template>
+
 
     <h2>Upload a picture of your creation!:</h2>
     <div *ngIf="currentFile" class="progress">
@@ -44,4 +40,17 @@
     
     
      
+      <div style="text-align:center">
+        <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+        <div><img [src]="url" *ngIf="url"></div>
+      </div>
     
+
+      <button class="btn btn-success" (click)="(getCustomerImages)">
+        View my Images
+      </button>
+      <ng-template [ngIf]="imageToShow">
+        <ng-template [ngIf]="imageToShow.photo">
+            <img [src]="imageToShow.photo" class="img-thumbnail" *ngIf="!isImageLoading;">
+        </ng-template>
+      </ng-template>

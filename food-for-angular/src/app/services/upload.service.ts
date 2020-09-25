@@ -45,7 +45,7 @@ public upload(pictureDTO : PictureDTO): Observable<HttpEvent<any>> {
       return this.http.get(`${this.baseUrl}/files`);
     }
 
-    getCustomerImages(pictureDTO : PictureDTO): Observable<File> {
+    getCustomerImages(pictureDTO : PictureDTO): Observable<any> {
      let username = pictureDTO.username;
       return this.http.post(`${this.baseUrl}/download`, username, {
         headers : {

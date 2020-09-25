@@ -14,7 +14,7 @@ export class HomeService {
 
   public home(u : User) : Observable<any>{
     let req : string = "https://api.spoonacular.com/recipes/complexSearch?" + 
-    "apiKey=f4f058137da84de2be93d7aa1b607872&number=0";
+    "apiKey=f4f058137da84de2be93d7aa1b607872&number=1";
     if (u.preference.dietType !== null){
       req = req.concat("&diet=" + u.preference.dietType);
     }
@@ -24,6 +24,8 @@ export class HomeService {
     if (u.preference.maxCalories > 0){
       req = req.concat("&maxCalories="+u.preference.maxCalories);
     }
+    let offSetNum : number = Math.trunc(Math.random()*10);
+    req = req.concat("&sort=random");
 
     
     console.log(":::::::request being sent!!! :::::");

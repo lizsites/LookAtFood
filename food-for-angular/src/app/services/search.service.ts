@@ -15,7 +15,7 @@ export class SearchService {
 
   public customSearch(query : string, cuisine : string, minCalories : number, maxCalories : number, diet : string) : Observable<any>{
     let req : string = "https://api.spoonacular.com/recipes/complexSearch?" + 
-    "apiKey=f4f058137da84de2be93d7aa1b607872&number=7";
+    "apiKey=f4f058137da84de2be93d7aa1b607872&number=1";
 
     console.log();
 
@@ -46,7 +46,7 @@ export class SearchService {
   getMoreInfo(id : number) : Observable<any>{
     let req : string = "https://api.spoonacular.com/recipes/" +
     id + "/information?includeNutrition=true" +
-    "&apiKey=f4f058137da84de2be93d7aa1b607872&number=1";
+    "&apiKey=f4f058137da84de2be93d7aa1b607872";
     console.log(req);
     return this.http.get(req) as Observable<any>;
   }

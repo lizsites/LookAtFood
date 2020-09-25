@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { PictureDTO } from 'src/app/models/picture-dto';
 import { LoginService } from 'src/app/services/login.service';
 import { ImageToShow } from 'src/app/models/image-to-show';
+import { POINT_CONVERSION_UNCOMPRESSED } from 'constants';
 
 @Component({
   selector: 'app-picture',
@@ -89,13 +90,15 @@ export class PictureComponent implements OnInit {
         console.log(typeof this.login.serviceUser.pictures[0].picture);
         console.log(this.login.serviceUser.pictures[0].picture);
 
-        const reader = new FileReader();
-      reader.onload = (e) => this.imageToShow = e.target.result;
-      reader.readAsDataURL(new Blob([data]));
+      //   const reader = new FileReader();
+      // reader.onload = (e) => this.imageToShow = e.target.result;
+      // reader.readAsDataURL(new Blob([data]));
         //get string out of object 
 
         let image = new Image();
-        image.src="data:image/jpeg;base64,"+this.login.serviceUser.pictures[0].picture;
+
+        
+        image.src="data:image/jpeg;base64,"+this.login.serviceUser.pictures[this.login.serviceUser.pictures.length -1].picture;
         let w= window.open("");
         w.document.write(image.outerHTML);
       },

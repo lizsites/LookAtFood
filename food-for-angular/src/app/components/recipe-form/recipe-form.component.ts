@@ -6,6 +6,7 @@ import { FormGroup, FormControl,FormBuilder,Validators, FormArray } from '@angul
 import { JsonPipe } from '@angular/common';
 import { RecipeFormService } from 'src/app/services/recipe-form.service';
 import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-form',
@@ -63,7 +64,7 @@ export class RecipeFormComponent implements OnInit {
   }
 
 
-  constructor(private fb : FormBuilder, private rf : RecipeFormService, private login : LoginService) { }
+  constructor(private fb : FormBuilder, private rf : RecipeFormService, private login : LoginService, private route : Router) { }
 
   ngOnInit(): void {
     if (this.rf.serviceRecipe !==null){
@@ -117,9 +118,12 @@ export class RecipeFormComponent implements OnInit {
     this.rf.sendRecipe(recipe).subscribe((data)=>{
       console.log("first recipe of data" + data.recipes[0].title);
       this.login.serviceUser.recipes = data.recipes;
+      console.log(this.login.serviceUser);
       for (let recipe of this.login.serviceUser.recipes){
       console.log("Recipes in user" + recipe);
       }
+      this.login.serviceUser.recipes.push(recipe);
+      this.route.navigate(['cookbook']);
     },()=>{
       console.log("something went wrong");
     });

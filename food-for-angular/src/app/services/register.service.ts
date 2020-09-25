@@ -12,7 +12,7 @@ export class RegisterService {
 
   public register(user :User) : Observable<User> {
     let jsonUser : string = JSON.stringify(user);
-    return this.http.post("http://localhost:8090/food/register", jsonUser, {
+    return this.http.post("http://ec2-18-218-228-24.us-east-2.compute.amazonaws.com:8090/food/register", jsonUser, {
 
       headers : {
       'Content-Type': 'application/json',

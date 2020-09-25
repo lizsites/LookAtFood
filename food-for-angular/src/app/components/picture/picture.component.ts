@@ -64,10 +64,29 @@ export class PictureComponent implements OnInit {
       event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);
+          console.log(event);
         } else if (event instanceof HttpResponse) {
           this.message = event.body.message;
           // this.fileInfos = this.uploadService.getFiles();
-        
+          console.log(event);
+
+          console.log("User before being sent to database")
+          console.log(this.login.serviceUser);
+          console.log("New picture array");
+          for (let picture of this.login.serviceUser.pictures){
+            console.log(Object.values(picture));
+          }
+          this.login.serviceUser = event.body;
+          console.log("new user sent back from database:")
+          console.log(event.body)
+          console.log(Object.values(event.body));
+          console.log("Our user after request sent:")
+          console.log(this.login.serviceUser)
+          console.log(Object.values(this.login.serviceUser));
+          console.log("New picture array");
+          for (let picture of this.login.serviceUser.pictures){
+            console.log(Object.values(picture));
+          }
         }
       },
       err => {

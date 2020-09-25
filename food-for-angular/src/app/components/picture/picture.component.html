@@ -4,7 +4,7 @@
 
 <ng-template [ngIf]="imageToShow">
   <ng-template [ngIf]="imageToShow.photo">
-      <img [src]="imageToShow.photo" class="img-thumbnail" *ngIf="!isImageLoading;">
+    <img ng-src="data:image/jpeg;base64,{{imageToShow}}" class="img-thumbnail" *ngIf="!isImageLoading;">
   </ng-template>
 </ng-template>
 
